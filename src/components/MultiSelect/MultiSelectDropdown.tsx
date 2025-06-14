@@ -64,9 +64,6 @@ export const MultiSelectDropdown = React.forwardRef<
               className="flex-1 bg-transparent text-xs font-poppins text-[#4C5564] placeholder:text-[#BABABA] tracking-[0.429px] border-none outline-none"
               autoFocus
             />
-            {!searchValue && (
-              <div className="w-px h-[15px] bg-[#545454] ml-2" />
-            )}
           </div>
           <div className="flex items-center justify-center px-2 py-1">
             <ChevronDown className="h-4 w-4 text-[#545454]" />
