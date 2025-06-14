@@ -80,14 +80,21 @@ const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(
 
     return (
       <div
-        className={cn(multiSelectVariants({ orientation }), className)}
+        className={cn(
+          multiSelectVariants({ orientation }),
+          "h-auto flex-grow-0",
+          className,
+        )}
         style={{ maxWidth }}
         ref={ref}
         {...props}
       >
         {/* Label Section */}
         {label && (
-          <div className="flex min-w-[153px] items-start px-2 py-1.5">
+          <div
+            className="flex min-w-[153px] items-start px-2"
+            style={{ padding: "7px 8px" }}
+          >
             <span className="text-xs font-semibold text-[#545454] font-poppins tracking-[0.429px]">
               {label}
             </span>
@@ -95,7 +102,7 @@ const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(
         )}
 
         {/* Value Container */}
-        <div className="flex flex-1 min-h-[32px] flex-wrap items-center gap-2 pt-1">
+        <div className="flex flex-1 min-h-[32px] flex-wrap items-center gap-2">
           {/* Selected Items */}
           {items.map((item) => (
             <Tag
