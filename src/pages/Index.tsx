@@ -46,21 +46,30 @@ const Index = () => {
   ]);
 
   // Custom selected item UI examples
-  const CustomPillUI: React.FC<SelectedItemUIProps> = ({
+  const FullWidthItemUI: React.FC<SelectedItemUIProps> = ({
     item,
     onRemove,
     removable,
   }) => (
-    <div className="inline-flex items-center px-3 py-1 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs font-medium">
-      <span>{item.label}</span>
-      {removable && onRemove && (
-        <button
-          onClick={onRemove}
-          className="ml-2 text-white hover:text-gray-200 focus:outline-none"
+    <div className="flex w-full items-start gap-2 p-2 self-stretch">
+      <div className="flex-1 text-xs font-normal text-[#212529] font-poppins tracking-[0.429px] leading-normal">
+        {item.label}
+      </div>
+      <div className="flex items-center justify-center pb-px">
+        <svg
+          className="h-4 w-4 text-[#4C5564]"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
         >
-          ×
-        </button>
-      )}
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+          />
+        </svg>
+      </div>
     </div>
   );
 
