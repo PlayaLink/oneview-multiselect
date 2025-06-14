@@ -18,19 +18,32 @@ const Index = () => {
     { id: 6, label: "Tennessee" },
   ]);
 
+  const availableOptions: MultiSelectItem[] = [
+    { id: 1, label: "Team A" },
+    { id: 2, label: "Team c" },
+    { id: 3, label: "California" },
+    { id: 4, label: "Utah" },
+    { id: 5, label: "Nebraska" },
+    { id: 6, label: "Tennessee" },
+    { id: 7, label: "1099" },
+    { id: 8, label: "Midwest" },
+    { id: 9, label: "Northern Region" },
+    { id: 10, label: "Team B" },
+    { id: 11, label: "Team C" },
+    { id: 12, label: "Texas" },
+  ];
+
   const handleRemove = (itemToRemove: MultiSelectItem) => {
     setSelectedItems((items) =>
       items.filter((item) => item.id !== itemToRemove.id),
     );
   };
 
-  const handleAdd = () => {
-    // In a real app, this would open a dialog or dropdown to select new items
-    const newItem: MultiSelectItem = {
-      id: Date.now(),
-      label: `New Tag ${selectedItems.length + 1}`,
-    };
-    setSelectedItems((items) => [...items, newItem]);
+  const handleAdd = (itemToAdd: MultiSelectItem) => {
+    // Check if item is already selected
+    if (!selectedItems.find((item) => item.id === itemToAdd.id)) {
+      setSelectedItems((items) => [...items, itemToAdd]);
+    }
   };
 
   return (
@@ -58,6 +71,7 @@ const Index = () => {
               <MultiSelect
                 label="Tags"
                 items={selectedItems}
+                availableOptions={availableOptions}
                 onRemove={handleRemove}
                 onAdd={handleAdd}
                 addButtonText="Add Tags"
@@ -82,8 +96,8 @@ const Index = () => {
                 <MultiSelect
                   label="Categories"
                   items={[]}
-                  onAdd={() => console.log("Add clicked")}
-                  placeholder="No categories selected"
+                  availableOptions={availableOptions.slice(0, 5)}
+                  onAdd={(item) => console.log("Add", item)}
                 />
               </div>
 
@@ -115,8 +129,15 @@ const Index = () => {
                     { id: 2, label: "Marketing" },
                     { id: 3, label: "Sales" },
                   ]}
+                  availableOptions={[
+                    { id: 1, label: "Engineering" },
+                    { id: 2, label: "Marketing" },
+                    { id: 3, label: "Sales" },
+                    { id: 4, label: "Support" },
+                    { id: 5, label: "Operations" },
+                  ]}
                   onRemove={(item) => console.log("Remove", item)}
-                  onAdd={() => console.log("Add clicked")}
+                  onAdd={(item) => console.log("Add", item)}
                 />
               </div>
             </CardContent>

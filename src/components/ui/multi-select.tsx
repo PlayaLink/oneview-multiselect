@@ -5,6 +5,8 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 import { Tag } from "./tag";
 import { Button } from "./button";
+import { Popover, PopoverContent, PopoverTrigger } from "./popover";
+import { MultiSelectDropdown } from "./multi-select-dropdown";
 
 const multiSelectVariants = cva("flex w-full gap-1", {
   variants: {
@@ -28,8 +30,9 @@ export interface MultiSelectProps
     VariantProps<typeof multiSelectVariants> {
   label?: string;
   items: MultiSelectItem[];
+  availableOptions?: MultiSelectItem[];
   onRemove?: (item: MultiSelectItem) => void;
-  onAdd?: () => void;
+  onAdd?: (item: MultiSelectItem) => void;
   addButtonText?: string;
   maxWidth?: string;
   placeholder?: string;
@@ -42,6 +45,7 @@ const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(
       orientation,
       label = "Tags",
       items = [],
+      availableOptions = [],
       onRemove,
       onAdd,
       addButtonText = "Add Tags",
@@ -51,6 +55,29 @@ const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(
     },
     ref,
   ) => {
+    const [open, setOpen] = React.useState(false);
+    const [searchValue, setSearchValue] = React.useState("");
+
+    const handleSelectionChange = React.useCallback(
+      (item: MultiSelectItem, isSelected: boolean) => {
+        if (isSelected) {
+          // Remove item
+          onRemove?.(item);
+        } else {
+          // Add item
+          onAdd?.(item);
+        }
+      },
+      [onAdd, onRemove],
+    );
+
+    const handleOpenChange = React.useCallback((newOpen: boolean) => {
+      setOpen(newOpen);
+      if (!newOpen) {
+        setSearchValue("");
+      }
+    }, []);
+
     return (
       <div
         className={cn(multiSelectVariants({ orientation }), className)}
@@ -71,32 +98,45 @@ const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(
         <div className="flex flex-1 min-h-[32px] flex-col justify-center pt-1.5">
           <div className="flex min-h-[32px] flex-wrap items-center gap-2">
             {/* Selected Items */}
-            {items.length > 0 ? (
-              items.map((item) => (
-                <Tag
-                  key={item.id}
-                  label={item.label}
-                  onRemove={onRemove ? () => onRemove(item) : undefined}
-                  removable={!!onRemove}
-                  variant="default"
-                />
-              ))
-            ) : placeholder ? (
-              <span className="text-sm text-gray-400 py-1">{placeholder}</span>
-            ) : null}
+            {items.map((item) => (
+              <Tag
+                key={item.id}
+                label={item.label}
+                onRemove={onRemove ? () => onRemove(item) : undefined}
+                removable={!!onRemove}
+                variant="default"
+              />
+            ))}
 
-            {/* Add Button */}
-            {onAdd && (
-              <Button
-                type="button"
-                variant="ghost"
-                size="sm"
-                onClick={onAdd}
-                className="h-6 bg-[#FFF] px-2 py-0.5 text-xs font-semibold text-[#006CAB] hover:bg-blue-50 hover:text-blue-800 border-0 shadow-none rounded font-poppins tracking-[0.429px]"
-              >
-                {addButtonText}
-                <Plus className="h-3 w-3" />
-              </Button>
+            {/* Add Button with Dropdown */}
+            {(onAdd || availableOptions.length > 0) && (
+              <Popover open={open} onOpenChange={handleOpenChange}>
+                <PopoverTrigger asChild>
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="sm"
+                    className="h-6 bg-[#FFF] px-2 py-0.5 text-xs font-semibold text-[#006CAB] hover:bg-blue-50 hover:text-blue-800 border-0 shadow-none rounded font-poppins tracking-[0.429px]"
+                  >
+                    {addButtonText}
+                    <Plus className="h-3 w-3" />
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent
+                  className="w-auto p-0 border-0 bg-transparent shadow-none"
+                  align="start"
+                  side="bottom"
+                  sideOffset={4}
+                >
+                  <MultiSelectDropdown
+                    options={availableOptions}
+                    selectedItems={items}
+                    onSelectionChange={handleSelectionChange}
+                    searchValue={searchValue}
+                    onSearchChange={setSearchValue}
+                  />
+                </PopoverContent>
+              </Popover>
             )}
           </div>
         </div>
