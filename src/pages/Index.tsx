@@ -45,6 +45,24 @@ const Index = () => {
     { id: 103, label: "TailwindCSS" },
   ]);
 
+  const [verticalSelection, setVerticalSelection] = useState<MultiSelectItem[]>(
+    [
+      { id: 201, label: "Engineering" },
+      { id: 202, label: "Marketing" },
+    ],
+  );
+
+  const departmentOptions: MultiSelectItem[] = [
+    { id: 201, label: "Engineering" },
+    { id: 202, label: "Marketing" },
+    { id: 203, label: "Sales" },
+    { id: 204, label: "Support" },
+    { id: 205, label: "Operations" },
+    { id: 206, label: "Human Resources" },
+    { id: 207, label: "Finance" },
+    { id: 208, label: "Research & Development" },
+  ];
+
   // Custom selected item UI examples
   const FullWidthItemUI: React.FC<SelectedItemUIProps> = ({
     item,
@@ -186,26 +204,21 @@ const Index = () => {
               {/* Vertical Layout */}
               <div>
                 <h3 className="text-sm font-medium text-slate-700 mb-3">
-                  Vertical Layout
+                  Vertical Layout (Interactive)
                 </h3>
                 <MultiSelect
                   orientation="vertical"
                   label="Departments"
-                  value={[
-                    { id: 201, label: "Engineering" },
-                    { id: 202, label: "Marketing" },
-                  ]}
-                  options={[
-                    { id: 201, label: "Engineering" },
-                    { id: 202, label: "Marketing" },
-                    { id: 203, label: "Sales" },
-                    { id: 204, label: "Support" },
-                    { id: 205, label: "Operations" },
-                  ]}
-                  onChange={(items) =>
-                    console.log("Vertical selection:", items)
-                  }
+                  value={verticalSelection}
+                  options={departmentOptions}
+                  onChange={setVerticalSelection}
+                  addButtonText="Add Department"
+                  searchPlaceholder="Search departments..."
                 />
+                <div className="mt-2 text-xs text-slate-500">
+                  Selected: {verticalSelection.length} department
+                  {verticalSelection.length !== 1 ? "s" : ""}
+                </div>
               </div>
 
               {/* Custom Selected Item UI - Full Width */}
