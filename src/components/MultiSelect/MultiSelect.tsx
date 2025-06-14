@@ -230,7 +230,7 @@ export const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(
               className="w-auto p-0 border-0 bg-transparent shadow-none"
               align="start"
               side="bottom"
-              sideOffset={0}
+              sideOffset={-8}
               alignOffset={0}
             >
               <MultiSelectDropdown
