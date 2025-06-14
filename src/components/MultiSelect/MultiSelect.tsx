@@ -180,6 +180,26 @@ export const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(
       [value, onChange, disabled],
     );
 
+    const handleCreateNew = React.useCallback(
+      (label: string) => {
+        if (disabled) return;
+
+        // Create new item with unique ID (timestamp + random to avoid collisions)
+        const newItem: MultiSelectItem = {
+          id: `new-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+          label: label.trim(),
+        };
+
+        // Add to selected items
+        const newItems = [...value, newItem];
+        onChange(newItems);
+
+        // Close dropdown
+        setOpen(false);
+      },
+      [value, onChange, disabled],
+    );
+
     const handleRemove = React.useCallback(
       (itemToRemove: MultiSelectItem) => {
         if (disabled || !allowRemove) return;
@@ -240,6 +260,7 @@ export const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(
                 searchValue={searchValue}
                 onSearchChange={setSearchValue}
                 searchPlaceholder={searchPlaceholder}
+                onCreateNew={handleCreateNew}
               />
             </PopoverContent>
           </Popover>
