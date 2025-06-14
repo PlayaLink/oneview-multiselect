@@ -220,33 +220,43 @@ export const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(
     // Value container with selected items and add button
     const ValueContainer =
       showAddButton && availableOptions.length > 0 ? (
-        <Popover open={open} onOpenChange={handleOpenChange}>
-          <PopoverTrigger asChild>
-            <div
-              className={cn(
-                "flex flex-1 min-h-[32px] pl-2",
-                fullWidthButton
-                  ? "flex-col gap-2"
-                  : "flex-wrap items-center gap-2",
-              )}
+        <div className="relative">
+          {/* Fixed positioning anchor - invisible element at top-left of input area */}
+          <Popover open={open} onOpenChange={handleOpenChange}>
+            <PopoverTrigger asChild>
+              <div className="absolute top-0 left-2 w-1 h-1 opacity-0 pointer-events-none" />
+            </PopoverTrigger>
+            <PopoverContent
+              className="w-auto p-0 border-0 bg-transparent shadow-none"
+              align="start"
+              side="bottom"
+              sideOffset={0}
+              alignOffset={0}
             >
-              {/* Selected Items */}
-              {fullWidthButton ? (
-                <div className="flex flex-col gap-2 w-full">
-                  {value.map((item) => (
-                    <div key={item.id} onClick={(e) => e.stopPropagation()}>
-                      <SelectedItemComponent
-                        item={item}
-                        onRemove={
-                          allowRemove ? () => handleRemove(item) : undefined
-                        }
-                        removable={allowRemove && !disabled}
-                      />
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                value.map((item) => (
+              <MultiSelectDropdown
+                options={availableOptions}
+                selectedItems={value}
+                onSelectionChange={handleSelectionChange}
+                searchValue={searchValue}
+                onSearchChange={setSearchValue}
+                searchPlaceholder={searchPlaceholder}
+              />
+            </PopoverContent>
+          </Popover>
+
+          {/* Content container */}
+          <div
+            className={cn(
+              "flex flex-1 min-h-[32px] pl-2",
+              fullWidthButton
+                ? "flex-col gap-2"
+                : "flex-wrap items-center gap-2",
+            )}
+          >
+            {/* Selected Items */}
+            {fullWidthButton ? (
+              <div className="flex flex-col gap-2 w-full">
+                {value.map((item) => (
                   <div key={item.id} onClick={(e) => e.stopPropagation()}>
                     <SelectedItemComponent
                       item={item}
@@ -256,42 +266,39 @@ export const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(
                       removable={allowRemove && !disabled}
                     />
                   </div>
-                ))
-              )}
+                ))}
+              </div>
+            ) : (
+              value.map((item) => (
+                <div key={item.id} onClick={(e) => e.stopPropagation()}>
+                  <SelectedItemComponent
+                    item={item}
+                    onRemove={
+                      allowRemove ? () => handleRemove(item) : undefined
+                    }
+                    removable={allowRemove && !disabled}
+                  />
+                </div>
+              ))
+            )}
 
-              {/* Add Button */}
-              <Button
-                type="button"
-                variant="ghost"
-                size="sm"
-                disabled={disabled}
-                className={cn(
-                  "bg-[#FFF] px-2 py-0.5 text-xs font-semibold text-[#006CAB] hover:bg-blue-50 hover:text-blue-800 border-0 shadow-none rounded font-poppins tracking-[0.429px] disabled:opacity-50",
-                  fullWidthButton ? "w-full h-auto p-2 justify-start" : "h-6",
-                )}
-              >
-                {addButtonText}
-                <Plus className="h-3 w-3" />
-              </Button>
-            </div>
-          </PopoverTrigger>
-          <PopoverContent
-            className="w-auto p-0 border-0 bg-transparent shadow-none"
-            align="start"
-            side="bottom"
-            sideOffset={-32}
-            alignOffset={8}
-          >
-            <MultiSelectDropdown
-              options={availableOptions}
-              selectedItems={value}
-              onSelectionChange={handleSelectionChange}
-              searchValue={searchValue}
-              onSearchChange={setSearchValue}
-              searchPlaceholder={searchPlaceholder}
-            />
-          </PopoverContent>
-        </Popover>
+            {/* Add Button - now just triggers the popup */}
+            <Button
+              type="button"
+              variant="ghost"
+              size="sm"
+              disabled={disabled}
+              onClick={() => !disabled && setOpen(!open)}
+              className={cn(
+                "bg-[#FFF] px-2 py-0.5 text-xs font-semibold text-[#006CAB] hover:bg-blue-50 hover:text-blue-800 border-0 shadow-none rounded font-poppins tracking-[0.429px] disabled:opacity-50",
+                fullWidthButton ? "w-full h-auto p-2 justify-start" : "h-6",
+              )}
+            >
+              {addButtonText}
+              <Plus className="h-3 w-3" />
+            </Button>
+          </div>
+        </div>
       ) : (
         <div
           className={cn(
