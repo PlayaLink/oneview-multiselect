@@ -5,13 +5,13 @@ import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const tagVariants = cva(
-  "inline-flex items-center rounded-sm text-xs font-normal transition-colors",
+  "inline-flex items-center text-xs font-normal transition-colors font-poppins",
   {
     variants: {
       variant: {
-        default: "bg-blue-50 text-gray-800 border-blue-200/60",
-        secondary: "bg-gray-100 text-gray-800",
-        destructive: "bg-red-50 text-red-800",
+        default: "bg-[#E8F3FF] text-[#212529] rounded-sm",
+        secondary: "bg-gray-100 text-gray-800 rounded-sm",
+        destructive: "bg-red-50 text-red-800 rounded-sm",
       },
       size: {
         default: "h-auto",
@@ -53,7 +53,7 @@ const Tag = React.forwardRef<HTMLDivElement, TagProps>(
               e.stopPropagation();
               onRemove();
             }}
-            className="ml-0 flex h-[18px] w-[18px] items-center justify-center border-l border-blue-300/60 text-gray-600 hover:text-gray-800 focus:outline-none focus:ring-1 focus:ring-blue-400"
+            className="ml-0 flex h-[18px] w-[18px] items-center justify-center border-l border-[#AFD6FF] text-[#212529] hover:text-gray-800 focus:outline-none focus:ring-1 focus:ring-blue-400"
             aria-label={`Remove ${label}`}
           >
             <X className="h-2 w-2" />

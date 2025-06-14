@@ -61,8 +61,8 @@ const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(
         {/* Label Section */}
         {label && (
           <div className="flex min-w-[153px] items-start px-2 py-1.5">
-            <span className="text-xs font-semibold text-gray-500 tracking-wide">
-              {label.toUpperCase()}
+            <span className="text-xs font-semibold text-[#545454] font-poppins tracking-[0.429px]">
+              {label}
             </span>
           </div>
         )}
@@ -78,7 +78,7 @@ const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(
                   label={item.label}
                   onRemove={onRemove ? () => onRemove(item) : undefined}
                   removable={!!onRemove}
-                  className="bg-blue-50 text-gray-800"
+                  variant="default"
                 />
               ))
             ) : placeholder ? (
@@ -92,7 +92,7 @@ const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(
                 variant="ghost"
                 size="sm"
                 onClick={onAdd}
-                className="h-6 bg-white px-2 py-0.5 text-xs font-semibold text-blue-700 hover:bg-blue-50 hover:text-blue-800 border-0 shadow-none"
+                className="h-6 bg-[#FFF] px-2 py-0.5 text-xs font-semibold text-[#006CAB] hover:bg-blue-50 hover:text-blue-800 border-0 shadow-none rounded font-poppins tracking-[0.429px]"
               >
                 {addButtonText}
                 <Plus className="h-3 w-3" />
