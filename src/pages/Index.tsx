@@ -261,6 +261,7 @@ const Index = () => {
                   selectedItemUI={FullWidthItemUI}
                   addButtonText="Add Institution"
                   maxWidth="100%"
+                  fullWidthButton={true}
                 />
               </div>
 

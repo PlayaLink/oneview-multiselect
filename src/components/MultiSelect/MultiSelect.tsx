@@ -90,6 +90,10 @@ export interface MultiSelectProps
    * Whether items can be removed
    */
   allowRemove?: boolean;
+  /**
+   * Whether the add button should take full width on its own line
+   */
+  fullWidthButton?: boolean;
 }
 
 /**
@@ -146,6 +150,7 @@ export const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(
       disabled = false,
       showAddButton = true,
       allowRemove = true,
+      fullWidthButton = false,
       ...props
     },
     ref,
@@ -217,19 +222,42 @@ export const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(
       showAddButton && availableOptions.length > 0 ? (
         <Popover open={open} onOpenChange={handleOpenChange}>
           <PopoverTrigger asChild>
-            <div className="flex flex-1 min-h-[32px] flex-wrap items-center gap-2 pl-2">
+            <div
+              className={cn(
+                "flex flex-1 min-h-[32px] pl-2",
+                fullWidthButton
+                  ? "flex-col gap-2"
+                  : "flex-wrap items-center gap-2",
+              )}
+            >
               {/* Selected Items */}
-              {value.map((item) => (
-                <div key={item.id} onClick={(e) => e.stopPropagation()}>
-                  <SelectedItemComponent
-                    item={item}
-                    onRemove={
-                      allowRemove ? () => handleRemove(item) : undefined
-                    }
-                    removable={allowRemove && !disabled}
-                  />
+              {fullWidthButton ? (
+                <div className="flex flex-col gap-2 w-full">
+                  {value.map((item) => (
+                    <div key={item.id} onClick={(e) => e.stopPropagation()}>
+                      <SelectedItemComponent
+                        item={item}
+                        onRemove={
+                          allowRemove ? () => handleRemove(item) : undefined
+                        }
+                        removable={allowRemove && !disabled}
+                      />
+                    </div>
+                  ))}
                 </div>
-              ))}
+              ) : (
+                value.map((item) => (
+                  <div key={item.id} onClick={(e) => e.stopPropagation()}>
+                    <SelectedItemComponent
+                      item={item}
+                      onRemove={
+                        allowRemove ? () => handleRemove(item) : undefined
+                      }
+                      removable={allowRemove && !disabled}
+                    />
+                  </div>
+                ))
+              )}
 
               {/* Add Button */}
               <Button
@@ -237,7 +265,10 @@ export const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(
                 variant="ghost"
                 size="sm"
                 disabled={disabled}
-                className="h-6 bg-[#FFF] px-2 py-0.5 text-xs font-semibold text-[#006CAB] hover:bg-blue-50 hover:text-blue-800 border-0 shadow-none rounded font-poppins tracking-[0.429px] disabled:opacity-50"
+                className={cn(
+                  "bg-[#FFF] px-2 py-0.5 text-xs font-semibold text-[#006CAB] hover:bg-blue-50 hover:text-blue-800 border-0 shadow-none rounded font-poppins tracking-[0.429px] disabled:opacity-50",
+                  fullWidthButton ? "w-full h-auto p-2 justify-start" : "h-6",
+                )}
               >
                 {addButtonText}
                 <Plus className="h-3 w-3" />
@@ -262,16 +293,34 @@ export const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(
           </PopoverContent>
         </Popover>
       ) : (
-        <div className="flex flex-1 min-h-[32px] flex-wrap items-center gap-2 pl-2">
+        <div
+          className={cn(
+            "flex flex-1 min-h-[32px] pl-2",
+            fullWidthButton ? "flex-col gap-2" : "flex-wrap items-center gap-2",
+          )}
+        >
           {/* Selected Items */}
-          {value.map((item) => (
-            <SelectedItemComponent
-              key={item.id}
-              item={item}
-              onRemove={allowRemove ? () => handleRemove(item) : undefined}
-              removable={allowRemove && !disabled}
-            />
-          ))}
+          {fullWidthButton ? (
+            <div className="flex flex-col gap-2 w-full">
+              {value.map((item) => (
+                <SelectedItemComponent
+                  key={item.id}
+                  item={item}
+                  onRemove={allowRemove ? () => handleRemove(item) : undefined}
+                  removable={allowRemove && !disabled}
+                />
+              ))}
+            </div>
+          ) : (
+            value.map((item) => (
+              <SelectedItemComponent
+                key={item.id}
+                item={item}
+                onRemove={allowRemove ? () => handleRemove(item) : undefined}
+                removable={allowRemove && !disabled}
+              />
+            ))
+          )}
 
           {/* Add Button (without dropdown) */}
           {showAddButton && (
@@ -280,7 +329,10 @@ export const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(
               variant="ghost"
               size="sm"
               disabled={true}
-              className="h-6 bg-[#FFF] px-2 py-0.5 text-xs font-semibold text-[#006CAB] hover:bg-blue-50 hover:text-blue-800 border-0 shadow-none rounded font-poppins tracking-[0.429px] opacity-50"
+              className={cn(
+                "bg-[#FFF] px-2 py-0.5 text-xs font-semibold text-[#006CAB] hover:bg-blue-50 hover:text-blue-800 border-0 shadow-none rounded font-poppins tracking-[0.429px] opacity-50",
+                fullWidthButton ? "w-full h-auto p-2 justify-start" : "h-6",
+              )}
             >
               {addButtonText}
               <Plus className="h-3 w-3" />
@@ -288,7 +340,6 @@ export const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(
           )}
         </div>
       );
-
     return (
       <div
         className={cn(
