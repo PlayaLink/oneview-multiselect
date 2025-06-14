@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { MultiSelect, MultiSelectItem } from "@/components/MultiSelect";
+import {
+  MultiSelect,
+  MultiSelectItem,
+  SelectedItemUIProps,
+} from "@/components/MultiSelect";
+import { Tag } from "@/components/Tag";
 import {
   Card,
   CardContent,
@@ -39,6 +44,50 @@ const Index = () => {
     { id: 102, label: "TypeScript" },
     { id: 103, label: "TailwindCSS" },
   ]);
+
+  // Custom selected item UI examples
+  const CustomPillUI: React.FC<SelectedItemUIProps> = ({
+    item,
+    onRemove,
+    removable,
+  }) => (
+    <div className="inline-flex items-center px-3 py-1 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs font-medium">
+      <span>{item.label}</span>
+      {removable && onRemove && (
+        <button
+          onClick={onRemove}
+          className="ml-2 text-white hover:text-gray-200 focus:outline-none"
+        >
+          ×
+        </button>
+      )}
+    </div>
+  );
+
+  const CustomBadgeUI: React.FC<SelectedItemUIProps> = ({
+    item,
+    onRemove,
+    removable,
+  }) => (
+    <div className="inline-flex items-center px-2 py-1 rounded bg-green-100 border border-green-300 text-green-800 text-xs">
+      <span className="font-mono">{item.label}</span>
+      {removable && onRemove && (
+        <button
+          onClick={onRemove}
+          className="ml-1 text-green-600 hover:text-green-800 focus:outline-none"
+          aria-label={`Remove ${item.label}`}
+        >
+          <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+            <path
+              fillRule="evenodd"
+              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+              clipRule="evenodd"
+            />
+          </svg>
+        </button>
+      )}
+    </div>
+  );
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 p-8">
@@ -150,19 +199,122 @@ const Index = () => {
                 />
               </div>
 
-              {/* Custom Styling */}
+              {/* Label Position Right */}
               <div>
                 <h3 className="text-sm font-medium text-slate-700 mb-3">
-                  Custom Width
+                  Label Position Right
                 </h3>
                 <MultiSelect
-                  label="Custom"
+                  label="Right Label"
+                  labelPosition="right"
                   value={selectedItems.slice(0, 2)}
                   options={availableOptions}
                   onChange={() => {}}
                   maxWidth="400px"
-                  addButtonText="Add Item"
                 />
+              </div>
+
+              {/* Custom Selected Item UI - Pills */}
+              <div>
+                <h3 className="text-sm font-medium text-slate-700 mb-3">
+                  Custom UI - Gradient Pills
+                </h3>
+                <MultiSelect
+                  label="Skills"
+                  value={selectedItems.slice(0, 3)}
+                  options={availableOptions}
+                  onChange={() => {}}
+                  selectedItemUI={CustomPillUI}
+                  addButtonText="Add Skill"
+                />
+              </div>
+
+              {/* Custom Selected Item UI - Badges */}
+              <div>
+                <h3 className="text-sm font-medium text-slate-700 mb-3">
+                  Custom UI - Code Badges
+                </h3>
+                <MultiSelect
+                  label="Languages"
+                  value={[
+                    { id: 101, label: "JavaScript" },
+                    { id: 102, label: "TypeScript" },
+                    { id: 103, label: "Python" },
+                  ]}
+                  options={[
+                    { id: 101, label: "JavaScript" },
+                    { id: 102, label: "TypeScript" },
+                    { id: 103, label: "Python" },
+                    { id: 104, label: "Go" },
+                    { id: 105, label: "Rust" },
+                  ]}
+                  onChange={() => {}}
+                  selectedItemUI={CustomBadgeUI}
+                />
+              </div>
+
+              {/* Different Tag Variants */}
+              <div>
+                <h3 className="text-sm font-medium text-slate-700 mb-3">
+                  Different Tag Variants
+                </h3>
+                <div className="space-y-3">
+                  <div>
+                    <span className="text-xs text-slate-500 mr-2">
+                      Success:
+                    </span>
+                    <MultiSelect
+                      value={[{ id: 1, label: "Completed" }]}
+                      options={[]}
+                      onChange={() => {}}
+                      selectedItemUI={({ item, onRemove, removable }) => (
+                        <Tag
+                          label={item.label}
+                          variant="success"
+                          onRemove={onRemove}
+                          removable={removable}
+                        />
+                      )}
+                      showAddButton={false}
+                    />
+                  </div>
+                  <div>
+                    <span className="text-xs text-slate-500 mr-2">
+                      Warning:
+                    </span>
+                    <MultiSelect
+                      value={[{ id: 1, label: "Pending" }]}
+                      options={[]}
+                      onChange={() => {}}
+                      selectedItemUI={({ item, onRemove, removable }) => (
+                        <Tag
+                          label={item.label}
+                          variant="warning"
+                          onRemove={onRemove}
+                          removable={removable}
+                        />
+                      )}
+                      showAddButton={false}
+                    />
+                  </div>
+                  <div>
+                    <span className="text-xs text-slate-500 mr-2">Error:</span>
+                    <MultiSelect
+                      value={[{ id: 1, label: "Failed" }]}
+                      options={[]}
+                      onChange={() => {}}
+                      selectedItemUI={({ item, onRemove, removable }) => (
+                        <Tag
+                          label={item.label}
+                          variant="destructive"
+                          onRemove={onRemove}
+                          removable={removable}
+                        />
+                      )}
+                      showAddButton={false}
+                    />
+                  </div>
+                </div>
               </div>
             </CardContent>
           </Card>
@@ -239,11 +391,12 @@ const Index = () => {
                         @/components/MultiSelect
                       </code>
                     </li>
+                    <li>• Custom selected item UI with selectedItemUI prop</li>
+                    <li>• Configurable label positioning (left/right)</li>
+                    <li>• Standalone Tag component with multiple variants</li>
                     <li>• Full TypeScript support with interfaces</li>
                     <li>• Accessible with proper ARIA labels</li>
-                    <li>• Customizable styling with Tailwind CSS</li>
                     <li>• Form integration ready (React Hook Form, Formik)</li>
-                    <li>• Comprehensive documentation included</li>
                   </ul>
                 </div>
               </div>
