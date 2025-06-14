@@ -217,7 +217,7 @@ export const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(
       showAddButton && availableOptions.length > 0 ? (
         <Popover open={open} onOpenChange={handleOpenChange}>
           <PopoverTrigger asChild>
-            <div className="flex flex-1 min-h-[32px] flex-wrap items-center gap-2">
+            <div className="flex flex-1 min-h-[32px] flex-wrap items-center gap-2 pl-2">
               {/* Selected Items */}
               {value.map((item) => (
                 <div key={item.id} onClick={(e) => e.stopPropagation()}>
@@ -262,7 +262,7 @@ export const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(
           </PopoverContent>
         </Popover>
       ) : (
-        <div className="flex flex-1 min-h-[32px] flex-wrap items-center gap-2">
+        <div className="flex flex-1 min-h-[32px] flex-wrap items-center gap-2 pl-2">
           {/* Selected Items */}
           {value.map((item) => (
             <SelectedItemComponent

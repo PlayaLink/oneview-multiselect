@@ -199,21 +199,6 @@ const Index = () => {
                 />
               </div>
 
-              {/* Label Position Right */}
-              <div>
-                <h3 className="text-sm font-medium text-slate-700 mb-3">
-                  Label Position Right
-                </h3>
-                <MultiSelect
-                  label="Right Label"
-                  labelPosition="right"
-                  value={selectedItems.slice(0, 2)}
-                  options={availableOptions}
-                  onChange={() => {}}
-                  maxWidth="400px"
-                />
-              </div>
-
               {/* Custom Selected Item UI - Pills */}
               <div>
                 <h3 className="text-sm font-medium text-slate-700 mb-3">
