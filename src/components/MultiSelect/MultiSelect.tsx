@@ -301,50 +301,51 @@ export const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(
         </div>
       ) : (
         <div
-      <div className={cn(
-        "flex flex-1 min-h-[32px] pl-2",
-        fullWidthButton ? "flex-col gap-2" : "flex-wrap items-center gap-2"
-      )}>
-        {/* Selected Items */}
-        {fullWidthButton ? (
-          <div className="flex flex-col gap-2 w-full">
-            {value.map((item) => (
+          className={cn(
+            "flex flex-1 min-h-[32px] pl-2",
+            fullWidthButton ? "flex-col gap-2" : "flex-wrap items-center gap-2",
+          )}
+        >
+          {/* Selected Items */}
+          {fullWidthButton ? (
+            <div className="flex flex-col gap-2 w-full">
+              {value.map((item) => (
+                <SelectedItemComponent
+                  key={item.id}
+                  item={item}
+                  onRemove={allowRemove ? () => handleRemove(item) : undefined}
+                  removable={allowRemove && !disabled}
+                />
+              ))}
+            </div>
+          ) : (
+            value.map((item) => (
               <SelectedItemComponent
                 key={item.id}
                 item={item}
                 onRemove={allowRemove ? () => handleRemove(item) : undefined}
                 removable={allowRemove && !disabled}
               />
-            ))}
-          </div>
-        ) : (
-          value.map((item) => (
-            <SelectedItemComponent
-              key={item.id}
-              item={item}
-              onRemove={allowRemove ? () => handleRemove(item) : undefined}
-              removable={allowRemove && !disabled}
-            />
-          ))
-        )}
+            ))
+          )}
 
-        {/* Add Button (without dropdown) */}
-        {showAddButton && (
-          <Button
-            type="button"
-            variant="ghost"
-            size="sm"
-            disabled={true}
-            className={cn(
-              "bg-[#FFF] px-2 py-0.5 text-xs font-semibold text-[#006CAB] hover:bg-blue-50 hover:text-blue-800 border-0 shadow-none rounded font-poppins tracking-[0.429px] opacity-50",
-              fullWidthButton ? "w-full h-auto p-2 justify-start" : "h-6"
-            )}
-          >
-            {addButtonText}
-            <Plus className="h-3 w-3" />
-          </Button>
-        )}
-      </div>
+          {/* Add Button (without dropdown) */}
+          {showAddButton && (
+            <Button
+              type="button"
+              variant="ghost"
+              size="sm"
+              disabled={true}
+              className={cn(
+                "bg-[#FFF] px-2 py-0.5 text-xs font-semibold text-[#006CAB] hover:bg-blue-50 hover:text-blue-800 border-0 shadow-none rounded font-poppins tracking-[0.429px] opacity-50",
+                fullWidthButton ? "w-full h-auto p-2 justify-start" : "h-6",
+              )}
+            >
+              {addButtonText}
+              <Plus className="h-3 w-3" />
+            </Button>
+          )}
+        </div>
       );
     return (
       <div
