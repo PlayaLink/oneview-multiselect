@@ -278,10 +278,11 @@ export const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(
           <PopoverContent
             className="w-auto p-0 border-0 bg-transparent shadow-none"
             align="start"
-            side="bottom"
-            sideOffset={8}
+            side="top"
+            sideOffset={-32}
             alignOffset={0}
           >
+        >
             <MultiSelectDropdown
               options={availableOptions}
               selectedItems={value}
