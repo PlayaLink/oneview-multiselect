@@ -73,7 +73,7 @@ const Index = () => {
       <div className="flex-1 text-xs font-normal text-[#212529] font-poppins tracking-[0.429px] leading-normal">
         {item.label}
       </div>
-      <div className="flex items-center justify-center pb-px">
+      <div className="flex items-center gap-4 pb-px">
         <svg
           className="h-4 w-4 text-[#4C5564]"
           fill="none"
@@ -87,6 +87,30 @@ const Index = () => {
             d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
           />
         </svg>
+        {removable && onRemove && (
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onRemove();
+            }}
+            className="flex items-center justify-center hover:bg-red-50 rounded transition-colors"
+            aria-label={`Remove ${item.label}`}
+          >
+            <svg
+              className="h-4 w-4 text-red-500"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        )}
       </div>
     </div>
   );
