@@ -199,18 +199,59 @@ const Index = () => {
                 />
               </div>
 
-              {/* Custom Selected Item UI - Pills */}
+              {/* Custom Selected Item UI - Full Width */}
               <div>
                 <h3 className="text-sm font-medium text-slate-700 mb-3">
-                  Custom UI - Gradient Pills
+                  Custom UI - Full Width Items
                 </h3>
                 <MultiSelect
-                  label="Skills"
-                  value={selectedItems.slice(0, 3)}
-                  options={availableOptions}
+                  label="Institutions"
+                  value={[
+                    {
+                      id: 1,
+                      label:
+                        "University of California Berkeley - School of Optometry - TIN 12353843",
+                    },
+                    {
+                      id: 2,
+                      label:
+                        "Stanford University Medical Center - Department of Ophthalmology - TIN 98765432",
+                    },
+                    {
+                      id: 3,
+                      label:
+                        "Harvard Medical School - Massachusetts Eye and Ear - TIN 11223344",
+                    },
+                  ]}
+                  options={[
+                    {
+                      id: 1,
+                      label:
+                        "University of California Berkeley - School of Optometry - TIN 12353843",
+                    },
+                    {
+                      id: 2,
+                      label:
+                        "Stanford University Medical Center - Department of Ophthalmology - TIN 98765432",
+                    },
+                    {
+                      id: 3,
+                      label:
+                        "Harvard Medical School - Massachusetts Eye and Ear - TIN 11223344",
+                    },
+                    {
+                      id: 4,
+                      label: "UCLA Jules Stein Eye Institute - TIN 55667788",
+                    },
+                    {
+                      id: 5,
+                      label: "UCSF Department of Ophthalmology - TIN 99887766",
+                    },
+                  ]}
                   onChange={() => {}}
-                  selectedItemUI={CustomPillUI}
-                  addButtonText="Add Skill"
+                  selectedItemUI={FullWidthItemUI}
+                  addButtonText="Add Institution"
+                  maxWidth="100%"
                 />
               </div>
 
