@@ -282,7 +282,6 @@ export const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(
             sideOffset={0}
             alignOffset={0}
           >
-        >
             <MultiSelectDropdown
               options={availableOptions}
               selectedItems={value}
