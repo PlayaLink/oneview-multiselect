@@ -287,11 +287,9 @@ const Index = () => {
                 <MultiSelect
                   orientation="horizontal"
                   label="Categories"
-                  value={basicSelection.slice(0, 2)}
+                  value={horizontalSelection}
                   options={basicOptions.slice(0, 6)}
-                  onChange={(items) =>
-                    setBasicSelection([...items, ...basicSelection.slice(2)])
-                  }
+                  onChange={setHorizontalSelection}
                   addButtonText="Add Category"
                   searchPlaceholder="Search categories..."
                 />
