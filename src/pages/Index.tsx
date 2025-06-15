@@ -358,7 +358,7 @@ const Index = () => {
                 Each selected item takes the full width with custom styling and
                 external link icon.
               </p>
-              <div className="border border-gray-200 rounded-lg p-6 bg-gray-50">
+              <div className="border border-gray-200 rounded-lg p-6">
                 <MultiSelect
                   label="Institutions"
                   value={fullWidthSelection}
