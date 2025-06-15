@@ -317,9 +317,6 @@ const Index = () => {
                   fullWidthButton={true}
                 />
               </div>
-              <div className="mt-2 text-sm text-gray-500">
-                Custom full-width row design
-              </div>
             </div>
           </div>
         </section>
