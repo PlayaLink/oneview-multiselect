@@ -314,21 +314,45 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Custom UI */}
+        {/* Custom UI for selected items */}
         <section className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Custom Selected Item UI
+            Custom UI for selected items
           </h2>
           <p className="text-gray-600 mb-6">
-            Customize how selected items are displayed using the selectedItemUI
-            prop.
+            MultiSelect has a selectedItemUI prop that accepts different UI
+            designs for displaying selected items.
           </p>
 
-          <div className="space-y-8">
-            {/* Full Width Items */}
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Inline Badges */}
             <div>
               <h3 className="text-lg font-medium text-gray-900 mb-3">
-                Full Width Items
+                Inline Badges
+              </h3>
+              <p className="text-gray-600 mb-4">
+                Display selected items as compact inline badges (default
+                design).
+              </p>
+              <div className="border border-gray-200 rounded-lg p-6">
+                <MultiSelect
+                  label="Tags"
+                  value={basicSelection}
+                  options={basicOptions}
+                  onChange={setBasicSelection}
+                  addButtonText="Add Tags"
+                  searchPlaceholder="Search tags..."
+                />
+              </div>
+              <div className="mt-2 text-sm text-gray-500">
+                Default blue badge design
+              </div>
+            </div>
+
+            {/* Full Width Row */}
+            <div>
+              <h3 className="text-lg font-medium text-gray-900 mb-3">
+                Full-width Row
               </h3>
               <p className="text-gray-600 mb-4">
                 Each selected item takes the full width with custom styling and
@@ -345,6 +369,9 @@ const Index = () => {
                   maxWidth="100%"
                   fullWidthButton={true}
                 />
+              </div>
+              <div className="mt-2 text-sm text-gray-500">
+                Custom full-width row design
               </div>
             </div>
           </div>
