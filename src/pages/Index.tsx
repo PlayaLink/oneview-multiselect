@@ -260,7 +260,7 @@ const Index = () => {
               <p className="text-gray-600 mb-4">
                 When the component is disabled, users cannot interact with it.
               </p>
-              <div className="border border-gray-200 rounded-lg p-6 bg-gray-50">
+              <div className="border border-gray-200 rounded-lg p-6">
                 <MultiSelect
                   label="Skills"
                   value={[
@@ -283,7 +283,7 @@ const Index = () => {
               <p className="text-gray-600 mb-4">
                 Display selected items without the ability to add or remove.
               </p>
-              <div className="border border-gray-200 rounded-lg p-6 bg-gray-50">
+              <div className="border border-gray-200 rounded-lg p-6">
                 <MultiSelect
                   label="Technologies"
                   value={[
