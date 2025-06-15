@@ -461,7 +461,7 @@ const Index = () => {
                     onChange*
                   </td>
                   <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
-                    (items: MultiSelectItem[]) => void
+                    (items: MultiSelectItem[]) =&gt; void
                   </td>
                   <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
                     -
@@ -607,7 +607,8 @@ const Index = () => {
                     false
                   </td>
                   <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
-                    Whether the add button should take full width on its own line
+                    Whether the add button should take full width on its own
+                    line
                   </td>
                 </tr>
               </tbody>
@@ -616,9 +617,11 @@ const Index = () => {
 
           <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
             <p className="text-sm text-blue-800">
-              <strong>Note:</strong> Props marked with * are required. The MultiSelectItem interface contains:
+              <strong>Note:</strong> Props marked with * are required. The
+              MultiSelectItem interface contains:
               <code className="ml-1 px-1 py-0.5 bg-blue-100 rounded text-xs">
-                &#123; id: string | number; label: string; disabled?: boolean &#125;
+                &#123; id: string | number; label: string; disabled?: boolean
+                &#125;
               </code>
             </p>
           </div>
