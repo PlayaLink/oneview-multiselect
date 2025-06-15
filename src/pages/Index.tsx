@@ -240,7 +240,7 @@ const Index = () => {
               <p className="text-gray-600 mb-4">
                 When no items are selected, users can search and add new items.
               </p>
-              <div className="border border-gray-200 rounded-lg p-6 bg-gray-50">
+              <div className="border border-gray-200 rounded-lg p-6">
                 <MultiSelect
                   label="Categories"
                   value={emptySelection}
