@@ -23,6 +23,13 @@ const Index = () => {
     ],
   );
 
+  const [horizontalSelection, setHorizontalSelection] = useState<
+    MultiSelectItem[]
+  >([
+    { id: 101, label: "Team A" },
+    { id: 102, label: "Utah" },
+  ]);
+
   const [fullWidthSelection, setFullWidthSelection] = useState<
     MultiSelectItem[]
   >([
