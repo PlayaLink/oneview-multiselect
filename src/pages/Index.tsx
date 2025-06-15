@@ -37,6 +37,16 @@ const Index = () => {
     { id: 302, label: "Frontend" },
     { id: 303, label: "Backend" },
   ]);
+
+  const [wrapSelection, setWrapSelection] = useState<MultiSelectItem[]>([
+    { id: 401, label: "JavaScript" },
+    { id: 402, label: "TypeScript" },
+    { id: 403, label: "React" },
+    { id: 404, label: "Node.js" },
+    { id: 405, label: "Python" },
+    { id: 406, label: "PostgreSQL" },
+    { id: 407, label: "MongoDB" },
+  ]);
   const [fullWidthSelection, setFullWidthSelection] = useState<
     MultiSelectItem[]
   >([
