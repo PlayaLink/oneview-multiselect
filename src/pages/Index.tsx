@@ -249,9 +249,6 @@ const Index = () => {
                   searchPlaceholder="Search categories..."
                 />
               </div>
-              <div className="mt-2 text-sm text-gray-500">
-                Default horizontal layout
-              </div>
             </div>
 
             {/* Vertical Layout */}
@@ -259,9 +256,6 @@ const Index = () => {
               <h3 className="text-lg font-medium text-gray-900 mb-3">
                 Vertical
               </h3>
-              <p className="text-gray-600 mb-4">
-                Stack the label and input vertically for better use of space.
-              </p>
               <div className="border border-gray-200 rounded-lg p-6">
                 <MultiSelect
                   orientation="vertical"
