@@ -183,31 +183,6 @@ const Index = () => {
           </div>
         </header>
 
-        {/* Basic Usage */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Basic Usage
-          </h2>
-          <p className="text-gray-600 mb-6">
-            The most basic usage of MultiSelect with default settings.
-          </p>
-
-          <div className="border border-gray-200 rounded-lg p-6">
-            <MultiSelect
-              label="Tags"
-              value={basicSelection}
-              options={basicOptions}
-              onChange={setBasicSelection}
-              addButtonText="Add Tags"
-            />
-          </div>
-
-          <div className="mt-4 p-4 bg-gray-100 rounded text-sm text-gray-700">
-            <strong>Selected:</strong>{" "}
-            {basicSelection.map((item) => item.label).join(", ") || "None"}
-          </div>
-        </section>
-
         {/* States */}
         <section className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">States</h2>
