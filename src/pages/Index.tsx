@@ -349,9 +349,9 @@ const Index = () => {
               <div className="border border-gray-200 rounded-lg p-6">
                 <MultiSelect
                   label="Tags"
-                  value={basicSelection}
+                  value={inlineBadgeSelection}
                   options={basicOptions}
-                  onChange={setBasicSelection}
+                  onChange={setInlineBadgeSelection}
                   addButtonText="Add Tags"
                   searchPlaceholder="Search tags..."
                 />
