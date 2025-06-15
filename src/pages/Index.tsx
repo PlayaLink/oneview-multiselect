@@ -168,23 +168,18 @@ const Index = () => {
         {/* Header */}
         <header className="mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">MultiSelect</h1>
-          <p className="text-xl text-gray-600 mb-6">
+          <p className="text-xl text-gray-600 mb-9">
             A modern, accessible multi-select component with tags and dropdown
             functionality.
           </p>
-          <div className="flex flex-wrap gap-2">
-            <span className="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full">
-              React
-            </span>
-            <span className="px-3 py-1 bg-green-100 text-green-800 text-sm rounded-full">
-              TypeScript
-            </span>
-            <span className="px-3 py-1 bg-purple-100 text-purple-800 text-sm rounded-full">
-              Accessible
-            </span>
-            <span className="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full">
-              Customizable
-            </span>
+          <div className="border border-gray-200 rounded-lg p-6">
+            <MultiSelect
+              label="Tags"
+              value={basicSelection}
+              options={basicOptions}
+              onChange={setBasicSelection}
+              addButtonText="Add Tags"
+            />
           </div>
         </header>
 
