@@ -178,9 +178,13 @@ const Index = () => {
         {/* Header */}
         <header className="mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">MultiSelect</h1>
-          <p className="text-xl text-gray-600 mb-9">
-            A modern, accessible multi-select component with tags and dropdown
-            functionality.
+          <p className="text-xl text-gray-600 mb-6">
+            This input will initially only support the Tags input in the side
+            panel of OneView V2. But it should be built with the intention of
+            support other multi-select inputs that have different requirements
+            for orientation (i.e. label placed above the input vs to the left)
+            and the UI that is displayed for selected values. See below for more
+            details.
           </p>
           <div className="border border-gray-200 rounded-lg p-6">
             <MultiSelect
