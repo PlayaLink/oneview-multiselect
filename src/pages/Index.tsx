@@ -253,20 +253,44 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Layout Variants */}
+        {/* Layout */}
         <section className="mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Layout Variants
-          </h2>
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Layout</h2>
           <p className="text-gray-600 mb-6">
             Different layout configurations and orientations.
           </p>
 
-          <div className="space-y-8">
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Horizontal Layout */}
+            <div>
+              <h3 className="text-lg font-medium text-gray-900 mb-3">
+                Horizontal
+              </h3>
+              <p className="text-gray-600 mb-4">
+                Label and input positioned side by side (default layout).
+              </p>
+              <div className="border border-gray-200 rounded-lg p-6">
+                <MultiSelect
+                  orientation="horizontal"
+                  label="Categories"
+                  value={basicSelection.slice(0, 2)}
+                  options={basicOptions.slice(0, 6)}
+                  onChange={(items) =>
+                    setBasicSelection([...items, ...basicSelection.slice(2)])
+                  }
+                  addButtonText="Add Category"
+                  searchPlaceholder="Search categories..."
+                />
+              </div>
+              <div className="mt-2 text-sm text-gray-500">
+                Default horizontal layout
+              </div>
+            </div>
+
             {/* Vertical Layout */}
             <div>
               <h3 className="text-lg font-medium text-gray-900 mb-3">
-                Vertical Layout
+                Vertical
               </h3>
               <p className="text-gray-600 mb-4">
                 Stack the label and input vertically for better use of space.
