@@ -374,6 +374,256 @@ const Index = () => {
           </div>
         </section>
 
+        {/* Props */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Props</h2>
+          <p className="text-gray-600 mb-6">
+            Complete list of props available for the MultiSelect component.
+          </p>
+
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse border border-gray-200 rounded-lg">
+              <thead>
+                <tr className="bg-gray-50">
+                  <th className="border border-gray-200 px-4 py-3 text-left text-sm font-semibold text-gray-900">
+                    Prop
+                  </th>
+                  <th className="border border-gray-200 px-4 py-3 text-left text-sm font-semibold text-gray-900">
+                    Type
+                  </th>
+                  <th className="border border-gray-200 px-4 py-3 text-left text-sm font-semibold text-gray-900">
+                    Default
+                  </th>
+                  <th className="border border-gray-200 px-4 py-3 text-left text-sm font-semibold text-gray-900">
+                    Description
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="border border-gray-200 px-4 py-3 text-sm font-mono text-blue-700">
+                    label
+                  </td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                    string
+                  </td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                    "Tags"
+                  </td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                    Label displayed next to the component
+                  </td>
+                </tr>
+                <tr className="bg-gray-50">
+                  <td className="border border-gray-200 px-4 py-3 text-sm font-mono text-blue-700">
+                    labelPosition
+                  </td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                    "left" | "right"
+                  </td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                    "left"
+                  </td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                    Position of the label relative to the input
+                  </td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-200 px-4 py-3 text-sm font-mono text-blue-700">
+                    value*
+                  </td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                    MultiSelectItem[]
+                  </td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                    -
+                  </td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                    Currently selected items
+                  </td>
+                </tr>
+                <tr className="bg-gray-50">
+                  <td className="border border-gray-200 px-4 py-3 text-sm font-mono text-blue-700">
+                    options*
+                  </td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                    MultiSelectItem[]
+                  </td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                    -
+                  </td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                    Available options to select from
+                  </td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-200 px-4 py-3 text-sm font-mono text-blue-700">
+                    onChange*
+                  </td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                    (items: MultiSelectItem[]) => void
+                  </td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                    -
+                  </td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                    Callback when items are added or removed
+                  </td>
+                </tr>
+                <tr className="bg-gray-50">
+                  <td className="border border-gray-200 px-4 py-3 text-sm font-mono text-blue-700">
+                    selectedItemUI
+                  </td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                    React.ComponentType&lt;SelectedItemUIProps&gt;
+                  </td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                    DefaultSelectedItemUI
+                  </td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                    Custom component to render each selected item
+                  </td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-200 px-4 py-3 text-sm font-mono text-blue-700">
+                    addButtonText
+                  </td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                    string
+                  </td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                    "Add Tags"
+                  </td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                    Text displayed on the add button
+                  </td>
+                </tr>
+                <tr className="bg-gray-50">
+                  <td className="border border-gray-200 px-4 py-3 text-sm font-mono text-blue-700">
+                    searchPlaceholder
+                  </td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                    string
+                  </td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                    "Search tags"
+                  </td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                    Placeholder text for the search input
+                  </td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-200 px-4 py-3 text-sm font-mono text-blue-700">
+                    maxWidth
+                  </td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                    string
+                  </td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                    "568px"
+                  </td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                    Maximum width of the component
+                  </td>
+                </tr>
+                <tr className="bg-gray-50">
+                  <td className="border border-gray-200 px-4 py-3 text-sm font-mono text-blue-700">
+                    orientation
+                  </td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                    "horizontal" | "vertical"
+                  </td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                    "horizontal"
+                  </td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                    Layout orientation of the component
+                  </td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-200 px-4 py-3 text-sm font-mono text-blue-700">
+                    size
+                  </td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                    "sm" | "default" | "lg"
+                  </td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                    "default"
+                  </td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                    Size variant of the component
+                  </td>
+                </tr>
+                <tr className="bg-gray-50">
+                  <td className="border border-gray-200 px-4 py-3 text-sm font-mono text-blue-700">
+                    disabled
+                  </td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                    boolean
+                  </td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                    false
+                  </td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                    Whether the component is disabled
+                  </td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-200 px-4 py-3 text-sm font-mono text-blue-700">
+                    showAddButton
+                  </td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                    boolean
+                  </td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                    true
+                  </td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                    Whether to show the add button
+                  </td>
+                </tr>
+                <tr className="bg-gray-50">
+                  <td className="border border-gray-200 px-4 py-3 text-sm font-mono text-blue-700">
+                    allowRemove
+                  </td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                    boolean
+                  </td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                    true
+                  </td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                    Whether items can be removed
+                  </td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-200 px-4 py-3 text-sm font-mono text-blue-700">
+                    fullWidthButton
+                  </td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                    boolean
+                  </td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                    false
+                  </td>
+                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
+                    Whether the add button should take full width on its own line
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+            <p className="text-sm text-blue-800">
+              <strong>Note:</strong> Props marked with * are required. The MultiSelectItem interface contains:
+              <code className="ml-1 px-1 py-0.5 bg-blue-100 rounded text-xs">
+                &#123; id: string | number; label: string; disabled?: boolean &#125;
+              </code>
+            </p>
+          </div>
+        </section>
+
         {/* Features */}
         <section className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">
