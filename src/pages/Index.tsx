@@ -298,20 +298,13 @@ const Index = () => {
                   searchPlaceholder="Search tags..."
                 />
               </div>
-              <div className="mt-2 text-sm text-gray-500">
-                Default blue badge design
-              </div>
             </div>
 
             {/* Full Width Row */}
             <div>
               <h3 className="text-lg font-medium text-gray-900 mb-3">
-                Full-width Row
+                Block element (custom)
               </h3>
-              <p className="text-gray-600 mb-4">
-                Each selected item takes the full width with custom styling and
-                external link icon.
-              </p>
               <div className="border border-gray-200 rounded-lg p-6">
                 <MultiSelect
                   label="Institutions"
