@@ -389,20 +389,7 @@ const Index = () => {
                     Label displayed next to the component
                   </td>
                 </tr>
-                <tr className="bg-gray-50">
-                  <td className="border border-gray-200 px-4 py-3 text-sm font-mono text-blue-700">
-                    labelPosition
-                  </td>
-                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
-                    "left" | "right"
-                  </td>
-                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
-                    "left"
-                  </td>
-                  <td className="border border-gray-200 px-4 py-3 text-sm text-gray-600">
-                    Position of the label relative to the input
-                  </td>
-                </tr>
+
                 <tr>
                   <td className="border border-gray-200 px-4 py-3 text-sm font-mono text-blue-700">
                     value*
