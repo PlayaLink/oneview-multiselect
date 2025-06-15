@@ -1,11 +1,7 @@
 import { bootstrapApplication } from "@angular/platform-browser";
-import { importProvidersFrom } from "@angular/core";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { NgSelectModule } from "@ng-select/ng-select";
+import { provideAnimations } from "@angular/platform-browser/animations";
 import { AppComponent } from "./app/app.component";
 
 bootstrapApplication(AppComponent, {
-  providers: [
-    importProvidersFrom(FormsModule, ReactiveFormsModule, NgSelectModule),
-  ],
+  providers: [provideAnimations()],
 }).catch((err) => console.error(err));
