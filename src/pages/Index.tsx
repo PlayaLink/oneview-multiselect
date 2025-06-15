@@ -148,31 +148,6 @@ const Index = () => {
     </div>
   );
 
-  const CustomBadgeUI: React.FC<SelectedItemUIProps> = ({
-    item,
-    onRemove,
-    removable,
-  }) => (
-    <div className="inline-flex items-center px-2 py-1 rounded bg-green-100 border border-green-300 text-green-800 text-xs">
-      <span className="font-mono">{item.label}</span>
-      {removable && onRemove && (
-        <button
-          onClick={onRemove}
-          className="ml-1 text-green-600 hover:text-green-800 focus:outline-none"
-          aria-label={`Remove ${item.label}`}
-        >
-          <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-            <path
-              fillRule="evenodd"
-              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-              clipRule="evenodd"
-            />
-          </svg>
-        </button>
-      )}
-    </div>
-  );
-
   return (
     <div className="min-h-screen bg-white">
       <div className="max-w-6xl mx-auto px-6 py-8">
