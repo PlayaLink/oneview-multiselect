@@ -5,27 +5,48 @@ import {
   SelectedItemUIProps,
 } from "@/components/MultiSelect";
 import { Tag } from "@/components/Tag";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 
 const Index = () => {
-  const [selectedItems, setSelectedItems] = useState<MultiSelectItem[]>([
+  // State for various examples
+  const [basicSelection, setBasicSelection] = useState<MultiSelectItem[]>([
     { id: 1, label: "Team A" },
-    { id: 2, label: "Team c" },
+    { id: 2, label: "Team C" },
     { id: 3, label: "California" },
-    { id: 4, label: "Utah" },
-    { id: 5, label: "Nebraska" },
-    { id: 6, label: "Tennessee" },
   ]);
 
-  const availableOptions: MultiSelectItem[] = [
+  const [emptySelection, setEmptySelection] = useState<MultiSelectItem[]>([]);
+
+  const [verticalSelection, setVerticalSelection] = useState<MultiSelectItem[]>(
+    [
+      { id: 201, label: "Engineering" },
+      { id: 202, label: "Marketing" },
+    ],
+  );
+
+  const [fullWidthSelection, setFullWidthSelection] = useState<
+    MultiSelectItem[]
+  >([
+    {
+      id: 1,
+      label:
+        "University of California Berkeley - School of Optometry - TIN 12353843",
+    },
+    {
+      id: 2,
+      label:
+        "Stanford University Medical Center - Department of Ophthalmology - TIN 98765432",
+    },
+    {
+      id: 3,
+      label:
+        "Harvard Medical School - Massachusetts Eye and Ear - TIN 11223344",
+    },
+  ]);
+
+  // Options data
+  const basicOptions: MultiSelectItem[] = [
     { id: 1, label: "Team A" },
-    { id: 2, label: "Team c" },
+    { id: 2, label: "Team C" },
     { id: 3, label: "California" },
     { id: 4, label: "Utah" },
     { id: 5, label: "Nebraska" },
@@ -34,23 +55,9 @@ const Index = () => {
     { id: 8, label: "Midwest" },
     { id: 9, label: "Northern Region" },
     { id: 10, label: "Team B" },
-    { id: 11, label: "Team C" },
-    { id: 12, label: "Texas" },
+    { id: 11, label: "Texas" },
+    { id: 12, label: "Florida" },
   ];
-
-  const [emptySelection, setEmptySelection] = useState<MultiSelectItem[]>([]);
-  const [readOnlySelection] = useState<MultiSelectItem[]>([
-    { id: 101, label: "React" },
-    { id: 102, label: "TypeScript" },
-    { id: 103, label: "TailwindCSS" },
-  ]);
-
-  const [verticalSelection, setVerticalSelection] = useState<MultiSelectItem[]>(
-    [
-      { id: 201, label: "Engineering" },
-      { id: 202, label: "Marketing" },
-    ],
-  );
 
   const departmentOptions: MultiSelectItem[] = [
     { id: 201, label: "Engineering" },
@@ -63,7 +70,33 @@ const Index = () => {
     { id: 208, label: "Research & Development" },
   ];
 
-  // Custom selected item UI examples
+  const institutionOptions: MultiSelectItem[] = [
+    {
+      id: 1,
+      label:
+        "University of California Berkeley - School of Optometry - TIN 12353843",
+    },
+    {
+      id: 2,
+      label:
+        "Stanford University Medical Center - Department of Ophthalmology - TIN 98765432",
+    },
+    {
+      id: 3,
+      label:
+        "Harvard Medical School - Massachusetts Eye and Ear - TIN 11223344",
+    },
+    {
+      id: 4,
+      label: "UCLA Jules Stein Eye Institute - TIN 55667788",
+    },
+    {
+      id: 5,
+      label: "UCSF Department of Ophthalmology - TIN 99887766",
+    },
+  ];
+
+  // Custom UI components
   const FullWidthItemUI: React.FC<SelectedItemUIProps> = ({
     item,
     onRemove,
@@ -141,95 +174,152 @@ const Index = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 p-8">
-      <div className="mx-auto max-w-4xl space-y-8">
-        <div className="text-center">
-          <h1 className="text-3xl font-bold text-slate-800 mb-2">
-            MultiSelect Component Demo
-          </h1>
-          <p className="text-slate-600">
-            Interactive multi-select component with removable tags
+    <div className="min-h-screen bg-white">
+      <div className="max-w-6xl mx-auto px-6 py-8">
+        {/* Header */}
+        <header className="mb-12">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">MultiSelect</h1>
+          <p className="text-xl text-gray-600 mb-6">
+            A modern, accessible multi-select component with tags and dropdown
+            functionality.
           </p>
-        </div>
+          <div className="flex flex-wrap gap-2">
+            <span className="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full">
+              React
+            </span>
+            <span className="px-3 py-1 bg-green-100 text-green-800 text-sm rounded-full">
+              TypeScript
+            </span>
+            <span className="px-3 py-1 bg-purple-100 text-purple-800 text-sm rounded-full">
+              Accessible
+            </span>
+            <span className="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full">
+              Customizable
+            </span>
+          </div>
+        </header>
 
-        <div className="grid gap-8">
-          {/* Main Demo */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Default MultiSelect</CardTitle>
-              <CardDescription>
-                Click the X to remove items, or "Add Tags" to add new ones
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              <MultiSelect
-                label="Tags"
-                value={selectedItems}
-                options={availableOptions}
-                onChange={setSelectedItems}
-                addButtonText="Add Tags"
-              />
-            </CardContent>
-          </Card>
+        {/* Basic Usage */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            Basic Usage
+          </h2>
+          <p className="text-gray-600 mb-6">
+            The most basic usage of MultiSelect with default settings.
+          </p>
 
-          {/* Variations */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Component Variations</CardTitle>
-              <CardDescription>
-                Different configurations of the MultiSelect component
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-8">
-              {/* Empty State */}
-              <div>
-                <h3 className="text-sm font-medium text-slate-700 mb-3">
-                  Empty State
-                </h3>
+          <div className="border border-gray-200 rounded-lg p-6 bg-gray-50">
+            <MultiSelect
+              label="Tags"
+              value={basicSelection}
+              options={basicOptions}
+              onChange={setBasicSelection}
+              addButtonText="Add Tags"
+            />
+          </div>
+
+          <div className="mt-4 p-4 bg-gray-100 rounded text-sm text-gray-700">
+            <strong>Selected:</strong>{" "}
+            {basicSelection.map((item) => item.label).join(", ") || "None"}
+          </div>
+        </section>
+
+        {/* States */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">States</h2>
+          <p className="text-gray-600 mb-6">
+            Different states of the MultiSelect component.
+          </p>
+
+          <div className="space-y-8">
+            {/* Empty State */}
+            <div>
+              <h3 className="text-lg font-medium text-gray-900 mb-3">
+                Empty State
+              </h3>
+              <p className="text-gray-600 mb-4">
+                When no items are selected, users can search and add new items.
+              </p>
+              <div className="border border-gray-200 rounded-lg p-6 bg-gray-50">
                 <MultiSelect
                   label="Categories"
                   value={emptySelection}
-                  options={availableOptions.slice(0, 5)}
+                  options={basicOptions.slice(0, 5)}
                   onChange={setEmptySelection}
                   addButtonText="Add Categories"
                   searchPlaceholder="Search categories..."
                 />
               </div>
+            </div>
 
-              {/* Read-only */}
-              <div>
-                <h3 className="text-sm font-medium text-slate-700 mb-3">
-                  Read-only (no remove)
-                </h3>
+            {/* Disabled State */}
+            <div>
+              <h3 className="text-lg font-medium text-gray-900 mb-3">
+                Disabled State
+              </h3>
+              <p className="text-gray-600 mb-4">
+                When the component is disabled, users cannot interact with it.
+              </p>
+              <div className="border border-gray-200 rounded-lg p-6 bg-gray-50">
                 <MultiSelect
                   label="Skills"
-                  value={readOnlySelection}
+                  value={[
+                    { id: 101, label: "React" },
+                    { id: 102, label: "TypeScript" },
+                    { id: 103, label: "TailwindCSS" },
+                  ]}
+                  options={[]}
+                  onChange={() => {}}
+                  disabled={true}
+                />
+              </div>
+            </div>
+
+            {/* Read-only State */}
+            <div>
+              <h3 className="text-lg font-medium text-gray-900 mb-3">
+                Read-only
+              </h3>
+              <p className="text-gray-600 mb-4">
+                Display selected items without the ability to add or remove.
+              </p>
+              <div className="border border-gray-200 rounded-lg p-6 bg-gray-50">
+                <MultiSelect
+                  label="Technologies"
+                  value={[
+                    { id: 1, label: "React" },
+                    { id: 2, label: "TypeScript" },
+                    { id: 3, label: "Node.js" },
+                  ]}
                   options={[]}
                   onChange={() => {}}
                   allowRemove={false}
                   showAddButton={false}
                 />
               </div>
+            </div>
+          </div>
+        </section>
 
-              {/* Disabled State */}
-              <div>
-                <h3 className="text-sm font-medium text-slate-700 mb-3">
-                  Disabled State
-                </h3>
-                <MultiSelect
-                  label="Locked Tags"
-                  value={selectedItems.slice(0, 3)}
-                  options={availableOptions}
-                  onChange={() => {}}
-                  disabled={true}
-                />
-              </div>
+        {/* Layout Variants */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            Layout Variants
+          </h2>
+          <p className="text-gray-600 mb-6">
+            Different layout configurations and orientations.
+          </p>
 
-              {/* Vertical Layout */}
-              <div>
-                <h3 className="text-sm font-medium text-slate-700 mb-3">
-                  Vertical Layout (Interactive)
-                </h3>
+          <div className="space-y-8">
+            {/* Vertical Layout */}
+            <div>
+              <h3 className="text-lg font-medium text-gray-900 mb-3">
+                Vertical Layout
+              </h3>
+              <p className="text-gray-600 mb-4">
+                Stack the label and input vertically for better use of space.
+              </p>
+              <div className="border border-gray-200 rounded-lg p-6 bg-gray-50">
                 <MultiSelect
                   orientation="vertical"
                   label="Departments"
@@ -239,74 +329,58 @@ const Index = () => {
                   addButtonText="Add Department"
                   searchPlaceholder="Search departments..."
                 />
-                <div className="mt-2 text-xs text-slate-500">
-                  Selected: {verticalSelection.length} department
-                  {verticalSelection.length !== 1 ? "s" : ""}
-                </div>
               </div>
+              <div className="mt-2 text-sm text-gray-500">
+                Selected: {verticalSelection.length} department
+                {verticalSelection.length !== 1 ? "s" : ""}
+              </div>
+            </div>
+          </div>
+        </section>
 
-              {/* Custom Selected Item UI - Full Width */}
-              <div>
-                <h3 className="text-sm font-medium text-slate-700 mb-3">
-                  Custom UI - Full Width Items
-                </h3>
+        {/* Custom UI */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            Custom Selected Item UI
+          </h2>
+          <p className="text-gray-600 mb-6">
+            Customize how selected items are displayed using the selectedItemUI
+            prop.
+          </p>
+
+          <div className="space-y-8">
+            {/* Full Width Items */}
+            <div>
+              <h3 className="text-lg font-medium text-gray-900 mb-3">
+                Full Width Items
+              </h3>
+              <p className="text-gray-600 mb-4">
+                Each selected item takes the full width with custom styling and
+                external link icon.
+              </p>
+              <div className="border border-gray-200 rounded-lg p-6 bg-gray-50">
                 <MultiSelect
                   label="Institutions"
-                  value={[
-                    {
-                      id: 1,
-                      label:
-                        "University of California Berkeley - School of Optometry - TIN 12353843",
-                    },
-                    {
-                      id: 2,
-                      label:
-                        "Stanford University Medical Center - Department of Ophthalmology - TIN 98765432",
-                    },
-                    {
-                      id: 3,
-                      label:
-                        "Harvard Medical School - Massachusetts Eye and Ear - TIN 11223344",
-                    },
-                  ]}
-                  options={[
-                    {
-                      id: 1,
-                      label:
-                        "University of California Berkeley - School of Optometry - TIN 12353843",
-                    },
-                    {
-                      id: 2,
-                      label:
-                        "Stanford University Medical Center - Department of Ophthalmology - TIN 98765432",
-                    },
-                    {
-                      id: 3,
-                      label:
-                        "Harvard Medical School - Massachusetts Eye and Ear - TIN 11223344",
-                    },
-                    {
-                      id: 4,
-                      label: "UCLA Jules Stein Eye Institute - TIN 55667788",
-                    },
-                    {
-                      id: 5,
-                      label: "UCSF Department of Ophthalmology - TIN 99887766",
-                    },
-                  ]}
-                  onChange={() => {}}
+                  value={fullWidthSelection}
+                  options={institutionOptions}
+                  onChange={setFullWidthSelection}
                   selectedItemUI={FullWidthItemUI}
                   addButtonText="Add Institution"
                   maxWidth="100%"
                   fullWidthButton={true}
                 />
               </div>
+            </div>
 
-              {/* Custom Selected Item UI - Badges */}
-              <div>
-                <h3 className="text-sm font-medium text-slate-700 mb-3">
-                  Custom UI - Code Badges
-                </h3>
+            {/* Code Badges */}
+            <div>
+              <h3 className="text-lg font-medium text-gray-900 mb-3">
+                Code Badges
+              </h3>
+              <p className="text-gray-600 mb-4">
+                Display selected items as code-style badges with monospace font.
+              </p>
+              <div className="border border-gray-200 rounded-lg p-6 bg-gray-50">
                 <MultiSelect
                   label="Languages"
                   value={[
@@ -320,162 +394,235 @@ const Index = () => {
                     { id: 103, label: "Python" },
                     { id: 104, label: "Go" },
                     { id: 105, label: "Rust" },
+                    { id: 106, label: "Java" },
                   ]}
                   onChange={() => {}}
                   selectedItemUI={CustomBadgeUI}
                 />
               </div>
+            </div>
 
-              {/* Different Tag Variants */}
-              <div>
-                <h3 className="text-sm font-medium text-slate-700 mb-3">
-                  Different Tag Variants
-                </h3>
-                <div className="space-y-3">
-                  <div>
-                    <span className="text-xs text-slate-500 mr-2">
-                      Success:
-                    </span>
-                    <MultiSelect
-                      value={[{ id: 1, label: "Completed" }]}
-                      options={[]}
-                      onChange={() => {}}
-                      selectedItemUI={({ item, onRemove, removable }) => (
-                        <Tag
-                          label={item.label}
-                          variant="success"
-                          onRemove={onRemove}
-                          removable={removable}
-                        />
-                      )}
-                      showAddButton={false}
-                    />
-                  </div>
-                  <div>
-                    <span className="text-xs text-slate-500 mr-2">
-                      Warning:
-                    </span>
-                    <MultiSelect
-                      value={[{ id: 1, label: "Pending" }]}
-                      options={[]}
-                      onChange={() => {}}
-                      selectedItemUI={({ item, onRemove, removable }) => (
-                        <Tag
-                          label={item.label}
-                          variant="warning"
-                          onRemove={onRemove}
-                          removable={removable}
-                        />
-                      )}
-                      showAddButton={false}
-                    />
-                  </div>
-                  <div>
-                    <span className="text-xs text-slate-500 mr-2">Error:</span>
-                    <MultiSelect
-                      value={[{ id: 1, label: "Failed" }]}
-                      options={[]}
-                      onChange={() => {}}
-                      selectedItemUI={({ item, onRemove, removable }) => (
-                        <Tag
-                          label={item.label}
-                          variant="destructive"
-                          onRemove={onRemove}
-                          removable={removable}
-                        />
-                      )}
-                      showAddButton={false}
-                    />
+            {/* Tag Variants */}
+            <div>
+              <h3 className="text-lg font-medium text-gray-900 mb-3">
+                Tag Variants
+              </h3>
+              <p className="text-gray-600 mb-4">
+                Use different tag variants to indicate status or category.
+              </p>
+              <div className="space-y-4">
+                <div className="border border-gray-200 rounded-lg p-6 bg-gray-50">
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-3">
+                      <span className="text-sm text-gray-600 min-w-[80px]">
+                        Success:
+                      </span>
+                      <MultiSelect
+                        value={[{ id: 1, label: "Completed" }]}
+                        options={[]}
+                        onChange={() => {}}
+                        selectedItemUI={({ item, onRemove, removable }) => (
+                          <Tag
+                            label={item.label}
+                            variant="success"
+                            onRemove={onRemove}
+                            removable={removable}
+                          />
+                        )}
+                        showAddButton={false}
+                      />
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <span className="text-sm text-gray-600 min-w-[80px]">
+                        Warning:
+                      </span>
+                      <MultiSelect
+                        value={[{ id: 1, label: "Pending" }]}
+                        options={[]}
+                        onChange={() => {}}
+                        selectedItemUI={({ item, onRemove, removable }) => (
+                          <Tag
+                            label={item.label}
+                            variant="warning"
+                            onRemove={onRemove}
+                            removable={removable}
+                          />
+                        )}
+                        showAddButton={false}
+                      />
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <span className="text-sm text-gray-600 min-w-[80px]">
+                        Error:
+                      </span>
+                      <MultiSelect
+                        value={[{ id: 1, label: "Failed" }]}
+                        options={[]}
+                        onChange={() => {}}
+                        selectedItemUI={({ item, onRemove, removable }) => (
+                          <Tag
+                            label={item.label}
+                            variant="destructive"
+                            onRemove={onRemove}
+                            removable={removable}
+                          />
+                        )}
+                        showAddButton={false}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
+        </section>
 
-          {/* API Demo */}
-          <Card>
-            <CardHeader>
-              <CardTitle>API Integration Example</CardTitle>
-              <CardDescription>
-                Example showing how to integrate with forms and APIs
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="bg-slate-50 p-4 rounded-lg">
-                <h4 className="font-medium text-slate-700 mb-2">
-                  Current Selection:
-                </h4>
-                <pre className="text-sm text-slate-600 bg-white p-2 rounded border overflow-auto">
-                  {JSON.stringify(selectedItems, null, 2)}
-                </pre>
-              </div>
-              <div className="flex gap-2">
-                <button
-                  onClick={() => setSelectedItems([])}
-                  className="px-3 py-1 bg-slate-200 text-slate-700 rounded text-sm hover:bg-slate-300"
-                >
-                  Clear All
-                </button>
-                <button
-                  onClick={() => {
-                    const randomItem =
-                      availableOptions[
-                        Math.floor(Math.random() * availableOptions.length)
-                      ];
-                    if (
-                      !selectedItems.find((item) => item.id === randomItem.id)
-                    ) {
-                      setSelectedItems([...selectedItems, randomItem]);
-                    }
-                  }}
-                  className="px-3 py-1 bg-blue-200 text-blue-700 rounded text-sm hover:bg-blue-300"
-                >
-                  Add Random
-                </button>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Info */}
-          <Card className="bg-blue-50 border-blue-200">
-            <CardContent className="pt-6">
-              <div className="flex items-start gap-3">
-                <div className="rounded-full bg-blue-100 p-2">
+        {/* Features */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            Features
+          </h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="space-y-4">
+              <h3 className="text-lg font-medium text-gray-900">
+                Core Features
+              </h3>
+              <ul className="space-y-2 text-gray-600">
+                <li className="flex items-center gap-2">
                   <svg
-                    className="h-4 w-4 text-blue-600"
+                    className="w-4 h-4 text-green-600"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                   >
                     <path
                       fillRule="evenodd"
-                      d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                       clipRule="evenodd"
                     />
                   </svg>
-                </div>
-                <div>
-                  <h3 className="text-sm font-medium text-blue-900 mb-2">
-                    Production-Ready Component
-                  </h3>
-                  <ul className="text-sm text-blue-800 space-y-1">
-                    <li>
-                      • Export from{" "}
-                      <code className="bg-blue-100 px-1 rounded">
-                        @/components/MultiSelect
-                      </code>
-                    </li>
-                    <li>• Custom selected item UI with selectedItemUI prop</li>
-                    <li>• Configurable label positioning (left/right)</li>
-                    <li>• Standalone Tag component with multiple variants</li>
-                    <li>• Full TypeScript support with interfaces</li>
-                    <li>• Accessible with proper ARIA labels</li>
-                    <li>• Form integration ready (React Hook Form, Formik)</li>
-                  </ul>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+                  Search and filter options
+                </li>
+                <li className="flex items-center gap-2">
+                  <svg
+                    className="w-4 h-4 text-green-600"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  Create new tags on-the-fly
+                </li>
+                <li className="flex items-center gap-2">
+                  <svg
+                    className="w-4 h-4 text-green-600"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  Custom selected item UI
+                </li>
+                <li className="flex items-center gap-2">
+                  <svg
+                    className="w-4 h-4 text-green-600"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  Configurable label positioning
+                </li>
+              </ul>
+            </div>
+            <div className="space-y-4">
+              <h3 className="text-lg font-medium text-gray-900">
+                Technical Features
+              </h3>
+              <ul className="space-y-2 text-gray-600">
+                <li className="flex items-center gap-2">
+                  <svg
+                    className="w-4 h-4 text-green-600"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  Full TypeScript support
+                </li>
+                <li className="flex items-center gap-2">
+                  <svg
+                    className="w-4 h-4 text-green-600"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  WCAG accessibility compliance
+                </li>
+                <li className="flex items-center gap-2">
+                  <svg
+                    className="w-4 h-4 text-green-600"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  Form library integration
+                </li>
+                <li className="flex items-center gap-2">
+                  <svg
+                    className="w-4 h-4 text-green-600"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  Responsive design
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* Installation */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            Installation
+          </h2>
+          <div className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
+            <code>
+              import &#123; MultiSelect &#125; from "@/components/MultiSelect";
+            </code>
+          </div>
+        </section>
       </div>
     </div>
   );
