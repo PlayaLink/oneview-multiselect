@@ -376,17 +376,8 @@ export const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(
         ref={ref}
         {...props}
       >
-        {labelPosition === "left" ? (
-          <>
-            {LabelComponent}
-            {ValueContainer}
-          </>
-        ) : (
-          <>
-            {ValueContainer}
-            {LabelComponent}
-          </>
-        )}
+        {LabelComponent}
+        {ValueContainer}
       </div>
     );
   },
