@@ -237,11 +237,11 @@ const Index = () => {
             </div>
           </div>
 
-          {/* Badges and Add button wrap */}
+          {/* Badges (and Add button) wrap */}
           <div className="mt-8">
             <div className="w-1/2">
               <h3 className="text-lg font-medium text-gray-900 mb-3">
-                Badges and Add button wrap
+                Badges (and Add button) wrap
               </h3>
               <div className="border border-gray-200 rounded-lg p-6">
                 <MultiSelect
