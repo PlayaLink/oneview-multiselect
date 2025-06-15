@@ -1,181 +1,244 @@
-# Angular MultiSelect with ng-select
+# Angular MultiSelect Component
 
-This project demonstrates a production-ready MultiSelect component built with **Angular 17**, **ng-select 14.9.0**, and **Bootstrap 5**, matching the exact Figma design specifications.
+A modern, accessible multi-select component with tags and dropdown functionality for Angular applications. Initially built to support the Tags input in the side panel of OneView V2, but designed with flexibility for other multi-select use cases.
 
-## 🚀 Features
+## 🚀 Quick Start
 
-- ✅ **Angular 17** with standalone components
-- ✅ **ng-select 14.9.0** for powerful select functionality
-- ✅ **Bootstrap 5** for responsive styling
-- ✅ **Custom tag display** with remove functionality
-- ✅ **Reactive Forms** and Template-driven Forms support
-- ✅ **Accessibility** with proper ARIA labels
-- ✅ **TypeScript** strict mode
-- ✅ **Figma-perfect** styling with custom CSS variables
+### Prerequisites
 
-## 📦 Installation
+- Node.js (v18 or higher)
+- Angular CLI (v17 or higher)
 
-1. **Install dependencies:**
+### Installation & Running
+
+1. **Navigate to the Angular project:**
+
+   ```bash
+   cd angular-multiselect
+   ```
+
+2. **Install dependencies:**
 
    ```bash
    npm install
    ```
 
-2. **Start development server:**
+3. **Start the development server:**
 
    ```bash
+   npm start
+   # or
    ng serve
    ```
 
-3. **Open your browser:**
-   Navigate to `http://localhost:4200/`
+4. **Open your browser:**
+   Navigate to `http://localhost:4200`
 
-## 🏗️ Project Structure
+### Available Scripts
+
+- `npm start` - Start development server
+- `npm run build` - Build for production
+- `npm run watch` - Build in watch mode
+- `npm test` - Run unit tests
+- `npm run lint` - Run linting
+
+## 📁 Project Structure
 
 ```
-src/
-├── app/
-│   ├── components/
-│   │   ├── multi-select/          # Main MultiSelect component
-│   │   │   └── multi-select.component.ts
-│   │   └── tag/                   # Tag display component
-│   │       └── tag.component.ts
-│   ├── models/
-│   │   └── multi-select-item.interface.ts
-│   └── app.component.ts           # Demo page
-├── styles.scss                    # Global styles & ng-select customization
-└── index.html
+angular-multiselect/
+├── src/
+│   ├── app/
+│   │   ├── components/
+│   │   │   ├── multi-select/           # Main MultiSelect component
+│   │   │   │   ├── multi-select.component.ts
+│   │   │   │   └── multi-select-dropdown.component.ts
+│   │   │   └── tag/                    # Tag component with variants
+│   │   │       └── tag.component.ts
+│   │   ├── models/
+│   │   │   └── multi-select-item.interface.ts
+│   │   └── app.component.ts            # Demo/documentation page
+│   ├── index.html
+│   ├── main.ts
+│   └── styles.scss
+├── angular.json
+├── package.json
+└── README.md
 ```
 
-## 🎨 Component Usage
+## 🎯 Features
 
-### Basic Usage
+### Core Features
+
+- ✅ Search and filter options
+- ✅ Create new tags on-the-fly
+- ✅ Custom selected item UI templates
+- ✅ Multiple layout orientations (horizontal/vertical)
+- ✅ Badge wrapping with many selected items
+
+### Angular-Specific Features
+
+- ✅ **Reactive Forms Integration** (`ControlValueAccessor`)
+- ✅ **Custom Templates** (via `ng-template` and `@ContentChild`)
+- ✅ **Standalone Components** (Angular 17+ pattern)
+- ✅ **OnPush Change Detection** (optimized performance)
+- ✅ **Full TypeScript Support** with interfaces
+
+### UI Variants
+
+- ✅ Inline badges (default)
+- ✅ Block elements (custom full-width rows)
+- ✅ Multiple tag variants (success, warning, error, etc.)
+
+## 🔧 Basic Usage
+
+### Import the Component
 
 ```typescript
-import { MultiSelectComponent } from "./components/multi-select/multi-select.component";
-import { MultiSelectItem } from "./models/multi-select-item.interface";
+import { MultiSelectComponent } from './components/multi-select/multi-select.component';
 
-export class MyComponent {
-  selectedItems: MultiSelectItem[] = [];
-
-  availableOptions: MultiSelectItem[] = [
-    { id: 1, label: "Option 1" },
-    { id: 2, label: "Option 2" },
-    { id: 3, label: "Option 3" },
-  ];
-}
+@Component({
+  imports: [MultiSelectComponent],
+  // ...
+})
 ```
+
+### Basic Implementation
 
 ```html
 <app-multi-select
   label="Tags"
-  [availableOptions]="availableOptions"
-  [(ngModel)]="selectedItems"
-  (selectionChange)="onSelectionChange($event)"
-></app-multi-select>
+  [value]="selectedItems"
+  [options]="availableOptions"
+  (valueChange)="selectedItems = $event"
+  addButtonText="Add Tags"
+>
+</app-multi-select>
 ```
 
-### Reactive Forms
-
-```typescript
-import { FormControl } from "@angular/forms";
-
-export class MyComponent {
-  myControl = new FormControl<MultiSelectItem[]>([]);
-}
-```
+### With Custom Template
 
 ```html
-<app-multi-select
-  label="Categories"
-  [availableOptions]="options"
-  [formControl]="myControl"
-></app-multi-select>
+<app-multi-select [value]="items" [options]="options">
+  <ng-template #selectedItem let-item let-onRemove="onRemove">
+    <div class="custom-item">
+      {{ item.label }}
+      <button (click)="onRemove()">×</button>
+    </div>
+  </ng-template>
+</app-multi-select>
 ```
 
-## 🎯 Component API
-
-### Inputs
-
-| Property            | Type                | Default         | Description                           |
-| ------------------- | ------------------- | --------------- | ------------------------------------- |
-| `label`             | `string`            | `'Tags'`        | Label displayed next to the component |
-| `availableOptions`  | `MultiSelectItem[]` | `[]`            | Array of selectable options           |
-| `maxWidth`          | `string`            | `'568px'`       | Maximum width of the component        |
-| `searchPlaceholder` | `string`            | `'Search tags'` | Placeholder text for search input     |
-| `disabled`          | `boolean`           | `false`         | Whether the component is disabled     |
-
-### Outputs
-
-| Event             | Type                              | Description                    |
-| ----------------- | --------------------------------- | ------------------------------ |
-| `selectionChange` | `EventEmitter<MultiSelectItem[]>` | Emitted when selection changes |
-
-### MultiSelectItem Interface
+### Reactive Forms Integration
 
 ```typescript
-interface MultiSelectItem {
-  id: string | number;
-  label: string;
-  disabled?: boolean;
-}
+// In your component
+formControl = new FormControl<MultiSelectItem[]>([]);
+
+// In template
+<app-multi-select
+  [formControl]="formControl"
+  [options]="options">
+</app-multi-select>
 ```
+
+## 📋 Component Inputs
+
+| Input               | Type                         | Default         | Description                           |
+| ------------------- | ---------------------------- | --------------- | ------------------------------------- |
+| `label`             | `string`                     | `"Tags"`        | Label displayed next to the component |
+| `value`             | `MultiSelectItem[]`          | `[]`            | Currently selected items              |
+| `options`           | `MultiSelectItem[]`          | `[]`            | Available options to select from      |
+| `addButtonText`     | `string`                     | `"Add Tags"`    | Text displayed on the add button      |
+| `searchPlaceholder` | `string`                     | `"Search tags"` | Placeholder text for the search input |
+| `maxWidth`          | `string`                     | `"568px"`       | Maximum width of the component        |
+| `orientation`       | `"horizontal" \| "vertical"` | `"horizontal"`  | Layout orientation                    |
+| `size`              | `"sm" \| "default" \| "lg"`  | `"default"`     | Size variant                          |
+| `disabled`          | `boolean`                    | `false`         | Whether the component is disabled     |
+| `showAddButton`     | `boolean`                    | `true`          | Whether to show the add button        |
+| `allowRemove`       | `boolean`                    | `true`          | Whether items can be removed          |
+| `fullWidthButton`   | `boolean`                    | `false`         | Whether add button takes full width   |
 
 ## 🎨 Styling
 
-The component uses custom CSS variables matching the Figma design:
+The component uses:
 
-```scss
-:root {
-  --current-blue: #008bc9;
-  --bg-pale-blue: #e8f3ff;
-  --text-black: #212529;
-  --text-med-grey: #bababa;
-  --text-dark-grey: #545454;
-  --text-hyperlinks: #006cab;
-}
+- **Bootstrap 5** for base styling
+- **Poppins** font from Google Fonts
+- **Custom CSS** for exact design specifications
+- **Bootstrap Icons** for UI elements
+
+### Color Palette
+
+- Primary blue: `#008BC9`
+- Tag background: `#E8F3FF`
+- Text primary: `#212529`
+- Text secondary: `#4C5564`
+
+## 🌟 Advanced Features
+
+### Custom Selected Item Templates
+
+Use Angular's template system to customize how selected items are displayed:
+
+```html
+<app-multi-select [value]="items" [options]="options">
+  <ng-template
+    #selectedItem
+    let-item
+    let-removable="removable"
+    let-onRemove="onRemove"
+  >
+    <!-- Your custom UI here -->
+  </ng-template>
+</app-multi-select>
 ```
 
-### Customization
+### Form Validation
 
-You can override the default styling by modifying the CSS variables or extending the component classes:
+Works seamlessly with Angular's reactive forms and validation:
 
-```scss
-.ng-select.custom-multiselect {
-  // Your custom styles here
-}
+```typescript
+this.form = this.fb.group({
+  tags: [[], [Validators.required, Validators.minLength(1)]],
+});
 ```
 
-## 🔧 Configuration
+## 🔄 Development
 
-### ng-select Configuration
+### Build for Production
 
-The component is configured with the following ng-select options:
+```bash
+npm run build
+```
 
-- ✅ Multiple selection enabled
-- ✅ Search functionality
-- ✅ Custom checkbox styling
-- ✅ Close on select disabled for better UX
-- ✅ Clear search on add enabled
-- ✅ Dropdown appended to body for better positioning
+### Run Tests
 
-### Bootstrap Integration
+```bash
+npm test
+```
 
-Bootstrap 5 classes are used for:
+### Linting
 
-- Grid system (`row`, `col-*`)
-- Cards (`card`, `card-header`, `card-body`)
-- Utilities (`d-flex`, `gap-*`, `text-*`)
-- Icons (Bootstrap Icons)
+```bash
+npm run lint
+```
 
-## 🚀 Build
+## 📱 Browser Support
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
 
-## 🧪 Testing
+## 🤝 OneView V2 Integration
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+This component is specifically designed for OneView V2's side panel tags input, featuring:
 
-## 📝 License
+- Exact color specifications matching the design system
+- Responsive behavior for side panel constraints
+- Accessibility compliance for enterprise applications
+- TypeScript interfaces for robust type safety
 
-This project is licensed under the MIT License.
+## 📄 License
+
+This project is part of the OneView V2 component library.
