@@ -1,7 +1,8 @@
 import { Component } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { FormsModule, ReactiveFormsModule, FormControl } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MultiSelectComponent } from "./components/multi-select/multi-select.component";
+import { TagComponent } from "./components/tag/tag.component";
 import { MultiSelectItem } from "./models/multi-select-item.interface";
 
 @Component({
@@ -12,176 +13,485 @@ import { MultiSelectItem } from "./models/multi-select-item.interface";
     FormsModule,
     ReactiveFormsModule,
     MultiSelectComponent,
+    TagComponent,
   ],
   template: `
-    <div
-      class="min-vh-100 bg-light p-4"
-      style="background: linear-gradient(to right bottom, #f8fafc, #f1f5f9);"
-    >
-      <div class="container">
-        <div class="text-center mb-5">
-          <h1 class="display-5 fw-bold text-dark mb-3">
-            Angular MultiSelect with ng-select Demo
-          </h1>
-          <p class="lead text-muted">
-            Interactive multi-select component using ng-select 14.9.0 and
-            Bootstrap 5
+    <div class="min-vh-100 bg-white">
+      <div class="container-fluid px-4 py-5" style="max-width: 1200px">
+        <!-- Header -->
+        <header class="mb-5">
+          <h1 class="display-4 fw-bold text-dark mb-3">MultiSelect</h1>
+          <p class="lead text-muted mb-4">
+            A modern, accessible multi-select component with tags and dropdown
+            functionality for Angular.
           </p>
-        </div>
+          <div class="d-flex flex-wrap gap-2">
+            <span class="badge bg-primary-subtle text-primary px-3 py-2">
+              Angular
+            </span>
+            <span class="badge bg-success-subtle text-success px-3 py-2">
+              TypeScript
+            </span>
+            <span class="badge bg-secondary-subtle text-secondary px-3 py-2">
+              Accessible
+            </span>
+            <span class="badge bg-warning-subtle text-warning px-3 py-2">
+              Customizable
+            </span>
+          </div>
+        </header>
 
-        <div class="row g-4">
-          <!-- Main Demo -->
-          <div class="col-12">
-            <div class="card shadow-sm">
-              <div class="card-header">
-                <h3 class="card-title mb-1">Default MultiSelect</h3>
-                <p class="card-text text-muted small mb-0">
-                  Click the X to remove items, or open dropdown to add new ones
-                </p>
-              </div>
-              <div class="card-body">
+        <!-- Basic Usage -->
+        <section class="mb-5">
+          <h2 class="h3 fw-semibold text-dark mb-3">Basic Usage</h2>
+          <p class="text-muted mb-4">
+            The most basic usage of MultiSelect with default settings.
+          </p>
+
+          <div class="border rounded p-4">
+            <app-multi-select
+              label="Tags"
+              [value]="basicSelection"
+              [options]="basicOptions"
+              (valueChange)="basicSelection = $event"
+              addButtonText="Add Tags"
+            ></app-multi-select>
+          </div>
+
+          <div class="mt-3 p-3 bg-light rounded">
+            <small class="text-muted">
+              <strong>Selected:</strong>
+              {{
+                basicSelection.length > 0
+                  ? basicSelection.map((item) => item.label).join(", ")
+                  : "None"
+              }}
+            </small>
+          </div>
+        </section>
+
+        <!-- States -->
+        <section class="mb-5">
+          <h2 class="h3 fw-semibold text-dark mb-3">States</h2>
+          <p class="text-muted mb-4">
+            Different states of the MultiSelect component.
+          </p>
+
+          <div class="row g-4">
+            <!-- Empty State -->
+            <div class="col-12">
+              <h3 class="h5 fw-medium text-dark mb-3">Empty State</h3>
+              <p class="text-muted mb-3">
+                When no items are selected, users can search and add new items.
+              </p>
+              <div class="border rounded p-4">
                 <app-multi-select
-                  label="Tags"
-                  [availableOptions]="availableOptions"
-                  [(ngModel)]="selectedItems"
-                  (selectionChange)="onSelectionChange($event)"
+                  label="Categories"
+                  [value]="emptySelection"
+                  [options]="basicOptions.slice(0, 5)"
+                  (valueChange)="emptySelection = $event"
+                  addButtonText="Add Categories"
+                  searchPlaceholder="Search categories..."
                 ></app-multi-select>
+              </div>
+            </div>
 
-                <div class="mt-3 p-3 bg-light rounded">
-                  <h6>Selected Items ({{ selectedItems.length }}):</h6>
-                  <code>{{ selectedItems | json }}</code>
-                </div>
+            <!-- Disabled State -->
+            <div class="col-12">
+              <h3 class="h5 fw-medium text-dark mb-3">Disabled State</h3>
+              <p class="text-muted mb-3">
+                When the component is disabled, users cannot interact with it.
+              </p>
+              <div class="border rounded p-4">
+                <app-multi-select
+                  label="Skills"
+                  [value]="disabledSelection"
+                  [options]="[]"
+                  (valueChange)="disabledSelection = $event"
+                  [disabled]="true"
+                ></app-multi-select>
+              </div>
+            </div>
+
+            <!-- Read-only State -->
+            <div class="col-12">
+              <h3 class="h5 fw-medium text-dark mb-3">Read-only</h3>
+              <p class="text-muted mb-3">
+                Display selected items without the ability to add or remove.
+              </p>
+              <div class="border rounded p-4">
+                <app-multi-select
+                  label="Technologies"
+                  [value]="readOnlySelection"
+                  [options]="[]"
+                  (valueChange)="readOnlySelection = $event"
+                  [allowRemove]="false"
+                  [showAddButton]="false"
+                ></app-multi-select>
               </div>
             </div>
           </div>
+        </section>
 
-          <!-- Variations -->
-          <div class="col-12">
-            <div class="card shadow-sm">
-              <div class="card-header">
-                <h3 class="card-title mb-1">Variations</h3>
-                <p class="card-text text-muted small mb-0">
-                  Different configurations of the MultiSelect component
-                </p>
-              </div>
-              <div class="card-body">
-                <div class="row g-4">
-                  <!-- Empty State -->
-                  <div class="col-12 col-md-6">
-                    <h6 class="text-dark mb-2">Empty State</h6>
-                    <app-multi-select
-                      label="Categories"
-                      [availableOptions]="availableOptions.slice(0, 5)"
-                      [(ngModel)]="emptySelection"
-                      searchPlaceholder="Select categories..."
-                    ></app-multi-select>
-                  </div>
+        <!-- Layout Variants -->
+        <section class="mb-5">
+          <h2 class="h3 fw-semibold text-dark mb-3">Layout Variants</h2>
+          <p class="text-muted mb-4">
+            Different layout configurations and orientations.
+          </p>
 
-                  <!-- Read-only -->
-                  <div class="col-12 col-md-6">
-                    <h6 class="text-dark mb-2">Disabled State</h6>
-                    <app-multi-select
-                      label="Skills"
-                      [availableOptions]="skillsOptions"
-                      [(ngModel)]="readOnlySelection"
-                      [disabled]="true"
-                    ></app-multi-select>
-                  </div>
+          <!-- Vertical Layout -->
+          <div class="mb-4">
+            <h3 class="h5 fw-medium text-dark mb-3">Vertical Layout</h3>
+            <p class="text-muted mb-3">
+              Stack the label and input vertically for better use of space.
+            </p>
+            <div class="border rounded p-4">
+              <app-multi-select
+                orientation="vertical"
+                label="Departments"
+                [value]="verticalSelection"
+                [options]="departmentOptions"
+                (valueChange)="verticalSelection = $event"
+                addButtonText="Add Department"
+                searchPlaceholder="Search departments..."
+              ></app-multi-select>
+            </div>
+            <small class="text-muted mt-2 d-block">
+              Selected: {{ verticalSelection.length }} department{{
+                verticalSelection.length !== 1 ? "s" : ""
+              }}
+            </small>
+          </div>
+        </section>
 
-                  <!-- Reactive Form -->
-                  <div class="col-12">
-                    <h6 class="text-dark mb-2">Reactive Form Integration</h6>
-                    <form class="d-flex align-items-end gap-3">
-                      <div class="flex-fill">
-                        <app-multi-select
-                          label="Departments"
-                          [availableOptions]="departmentOptions"
-                          [formControl]="departmentControl"
-                        ></app-multi-select>
-                      </div>
-                      <button
-                        type="button"
-                        class="btn btn-primary"
-                        (click)="clearForm()"
+        <!-- Custom UI -->
+        <section class="mb-5">
+          <h2 class="h3 fw-semibold text-dark mb-3">Custom Selected Item UI</h2>
+          <p class="text-muted mb-4">
+            Customize how selected items are displayed using custom templates.
+          </p>
+
+          <!-- Full Width Items -->
+          <div class="mb-4">
+            <h3 class="h5 fw-medium text-dark mb-3">Full Width Items</h3>
+            <p class="text-muted mb-3">
+              Each selected item takes the full width with custom styling and
+              external link icon.
+            </p>
+            <div class="border rounded p-4">
+              <app-multi-select
+                label="Institutions"
+                [value]="fullWidthSelection"
+                [options]="institutionOptions"
+                (valueChange)="fullWidthSelection = $event"
+                addButtonText="Add Institution"
+                maxWidth="100%"
+                [fullWidthButton]="true"
+              >
+                <ng-template
+                  #selectedItem
+                  let-item
+                  let-removable="removable"
+                  let-onRemove="onRemove"
+                >
+                  <div
+                    class="d-flex w-100 align-items-start gap-2 p-2 align-self-stretch"
+                  >
+                    <div
+                      class="flex-fill"
+                      style="
+                        font-family: 'Poppins', sans-serif;
+                        font-size: 12px;
+                        font-weight: 400;
+                        color: #212529;
+                        letter-spacing: 0.429px;
+                        line-height: normal;
+                      "
+                    >
+                      {{ item.label }}
+                    </div>
+                    <div class="d-flex align-items-center gap-3 pb-1">
+                      <!-- External link icon -->
+                      <svg
+                        class="text-muted"
+                        width="16"
+                        height="16"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        style="color: #4c5564"
                       >
-                        Clear
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        />
+                      </svg>
+                      <!-- Remove button -->
+                      <button
+                        *ngIf="removable"
+                        type="button"
+                        class="btn btn-sm p-1 d-flex align-items-center justify-content-center"
+                        style="
+                          border: none;
+                          background: none;
+                          border-radius: 2px;
+                          transition: background-color 0.2s ease;
+                        "
+                        (click)="onRemove()"
+                        (mouseenter)="
+                          $event.target.style.backgroundColor = '#fee2e2'
+                        "
+                        (mouseleave)="
+                          $event.target.style.backgroundColor = 'transparent'
+                        "
+                        [attr.aria-label]="'Remove ' + item.label"
+                      >
+                        <svg
+                          width="16"
+                          height="16"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          style="color: #dc2626"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12"
+                          />
+                        </svg>
                       </button>
-                    </form>
-
-                    <div class="mt-2">
-                      <small class="text-muted">
-                        Form Value: {{ departmentControl.value | json }}
-                        <br />
-                        Form Valid: {{ departmentControl.valid }}
-                      </small>
                     </div>
                   </div>
-                </div>
-              </div>
+                </ng-template>
+              </app-multi-select>
             </div>
+          </div>
+        </section>
+
+        <!-- Props Table -->
+        <section class="mb-5">
+          <h2 class="h3 fw-semibold text-dark mb-3">Props</h2>
+          <p class="text-muted mb-4">
+            Complete list of props available for the MultiSelect component.
+          </p>
+
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead class="table-light">
+                <tr>
+                  <th scope="col" class="fw-semibold">Prop</th>
+                  <th scope="col" class="fw-semibold">Type</th>
+                  <th scope="col" class="fw-semibold">Default</th>
+                  <th scope="col" class="fw-semibold">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code class="text-primary">label</code></td>
+                  <td><code>string</code></td>
+                  <td><code>"Tags"</code></td>
+                  <td>Label displayed next to the component</td>
+                </tr>
+                <tr>
+                  <td><code class="text-primary">value*</code></td>
+                  <td><code>MultiSelectItem[]</code></td>
+                  <td><code>-</code></td>
+                  <td>Currently selected items</td>
+                </tr>
+                <tr>
+                  <td><code class="text-primary">options*</code></td>
+                  <td><code>MultiSelectItem[]</code></td>
+                  <td><code>-</code></td>
+                  <td>Available options to select from</td>
+                </tr>
+                <tr>
+                  <td><code class="text-primary">addButtonText</code></td>
+                  <td><code>string</code></td>
+                  <td><code>"Add Tags"</code></td>
+                  <td>Text displayed on the add button</td>
+                </tr>
+                <tr>
+                  <td><code class="text-primary">searchPlaceholder</code></td>
+                  <td><code>string</code></td>
+                  <td><code>"Search tags"</code></td>
+                  <td>Placeholder text for the search input</td>
+                </tr>
+                <tr>
+                  <td><code class="text-primary">maxWidth</code></td>
+                  <td><code>string</code></td>
+                  <td><code>"568px"</code></td>
+                  <td>Maximum width of the component</td>
+                </tr>
+                <tr>
+                  <td><code class="text-primary">orientation</code></td>
+                  <td><code>"horizontal" | "vertical"</code></td>
+                  <td><code>"horizontal"</code></td>
+                  <td>Layout orientation of the component</td>
+                </tr>
+                <tr>
+                  <td><code class="text-primary">size</code></td>
+                  <td><code>"sm" | "default" | "lg"</code></td>
+                  <td><code>"default"</code></td>
+                  <td>Size variant of the component</td>
+                </tr>
+                <tr>
+                  <td><code class="text-primary">disabled</code></td>
+                  <td><code>boolean</code></td>
+                  <td><code>false</code></td>
+                  <td>Whether the component is disabled</td>
+                </tr>
+                <tr>
+                  <td><code class="text-primary">showAddButton</code></td>
+                  <td><code>boolean</code></td>
+                  <td><code>true</code></td>
+                  <td>Whether to show the add button</td>
+                </tr>
+                <tr>
+                  <td><code class="text-primary">allowRemove</code></td>
+                  <td><code>boolean</code></td>
+                  <td><code>true</code></td>
+                  <td>Whether items can be removed</td>
+                </tr>
+                <tr>
+                  <td><code class="text-primary">fullWidthButton</code></td>
+                  <td><code>boolean</code></td>
+                  <td><code>false</code></td>
+                  <td>
+                    Whether the add button should take full width on its own
+                    line
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
 
-          <!-- Features Info -->
-          <div class="col-12">
-            <div class="card bg-primary bg-opacity-10 border-primary">
-              <div class="card-body">
-                <div class="d-flex align-items-start">
-                  <div class="bg-primary bg-opacity-25 rounded-circle p-2 me-3">
-                    <i class="bi bi-info-circle-fill text-primary"></i>
-                  </div>
-                  <div>
-                    <h6 class="text-primary mb-2">Component Features</h6>
-                    <ul class="list-unstyled text-primary small mb-0">
-                      <li class="mb-1">
-                        <i class="bi bi-check-circle-fill me-2"></i>
-                        Built with Angular 17 and ng-select 14.9.0
-                      </li>
-                      <li class="mb-1">
-                        <i class="bi bi-check-circle-fill me-2"></i>
-                        Bootstrap 5 integration with custom styling
-                      </li>
-                      <li class="mb-1">
-                        <i class="bi bi-check-circle-fill me-2"></i>
-                        Reactive Forms and Template-driven Forms support
-                      </li>
-                      <li class="mb-1">
-                        <i class="bi bi-check-circle-fill me-2"></i>
-                        Custom tag display with remove functionality
-                      </li>
-                      <li class="mb-1">
-                        <i class="bi bi-check-circle-fill me-2"></i>
-                        Accessible with proper ARIA labels
-                      </li>
-                      <li class="mb-1">
-                        <i class="bi bi-check-circle-fill me-2"></i>
-                        Fully responsive design matching Figma specs
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
+          <div class="alert alert-info mt-4">
+            <strong>Note:</strong> Props marked with * are required. The
+            MultiSelectItem interface contains:
+            <code>
+              &#123; id: string | number; label: string; disabled?: boolean
+              &#125;
+            </code>
+          </div>
+        </section>
+
+        <!-- Features -->
+        <section class="mb-5">
+          <h2 class="h3 fw-semibold text-dark mb-3">Features</h2>
+          <div class="row">
+            <div class="col-md-6">
+              <h3 class="h5 fw-medium text-dark mb-3">Core Features</h3>
+              <ul class="list-unstyled">
+                <li class="d-flex align-items-center gap-2 mb-2">
+                  <i class="bi bi-check-circle-fill text-success"></i>
+                  <span>Search and filter options</span>
+                </li>
+                <li class="d-flex align-items-center gap-2 mb-2">
+                  <i class="bi bi-check-circle-fill text-success"></i>
+                  <span>Create new tags on-the-fly</span>
+                </li>
+                <li class="d-flex align-items-center gap-2 mb-2">
+                  <i class="bi bi-check-circle-fill text-success"></i>
+                  <span>Custom selected item UI templates</span>
+                </li>
+                <li class="d-flex align-items-center gap-2 mb-2">
+                  <i class="bi bi-check-circle-fill text-success"></i>
+                  <span>Multiple layout orientations</span>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <h3 class="h5 fw-medium text-dark mb-3">Technical Features</h3>
+              <ul class="list-unstyled">
+                <li class="d-flex align-items-center gap-2 mb-2">
+                  <i class="bi bi-check-circle-fill text-success"></i>
+                  <span>Full TypeScript support</span>
+                </li>
+                <li class="d-flex align-items-center gap-2 mb-2">
+                  <i class="bi bi-check-circle-fill text-success"></i>
+                  <span>Angular reactive forms integration</span>
+                </li>
+                <li class="d-flex align-items-center gap-2 mb-2">
+                  <i class="bi bi-check-circle-fill text-success"></i>
+                  <span>WCAG accessibility compliance</span>
+                </li>
+                <li class="d-flex align-items-center gap-2 mb-2">
+                  <i class="bi bi-check-circle-fill text-success"></i>
+                  <span>Responsive design</span>
+                </li>
+              </ul>
             </div>
           </div>
-        </div>
+        </section>
+
+        <!-- Installation -->
+        <section class="mb-5">
+          <h2 class="h3 fw-semibold text-dark mb-3">Installation</h2>
+          <pre
+            class="bg-dark text-light p-3 rounded overflow-auto"
+          ><code>import &#123; MultiSelectComponent &#125; from './components/multi-select/multi-select.component';</code></pre>
+        </section>
       </div>
     </div>
   `,
-  styleUrls: [],
 })
 export class AppComponent {
-  title = "angular-multiselect";
-
-  // Main demo data
-  selectedItems: MultiSelectItem[] = [
+  // Basic selection
+  basicSelection: MultiSelectItem[] = [
     { id: 1, label: "Team A" },
     { id: 2, label: "Team C" },
     { id: 3, label: "California" },
-    { id: 4, label: "Utah" },
-    { id: 5, label: "Nebraska" },
-    { id: 6, label: "Tennessee" },
   ];
 
-  availableOptions: MultiSelectItem[] = [
+  // Empty selection
+  emptySelection: MultiSelectItem[] = [];
+
+  // Vertical selection
+  verticalSelection: MultiSelectItem[] = [
+    { id: 201, label: "Engineering" },
+    { id: 202, label: "Marketing" },
+  ];
+
+  // Full width selection
+  fullWidthSelection: MultiSelectItem[] = [
+    {
+      id: 1,
+      label:
+        "University of California Berkeley - School of Optometry - TIN 12353843",
+    },
+    {
+      id: 2,
+      label:
+        "Stanford University Medical Center - Department of Ophthalmology - TIN 98765432",
+    },
+    {
+      id: 3,
+      label:
+        "Harvard Medical School - Massachusetts Eye and Ear - TIN 11223344",
+    },
+  ];
+
+  // Disabled selection
+  disabledSelection: MultiSelectItem[] = [
+    { id: 101, label: "React" },
+    { id: 102, label: "TypeScript" },
+    { id: 103, label: "TailwindCSS" },
+  ];
+
+  // Read-only selection
+  readOnlySelection: MultiSelectItem[] = [
+    { id: 1, label: "React" },
+    { id: 2, label: "TypeScript" },
+    { id: 3, label: "Node.js" },
+  ];
+
+  // Options data
+  basicOptions: MultiSelectItem[] = [
     { id: 1, label: "Team A" },
     { id: 2, label: "Team C" },
     { id: 3, label: "California" },
@@ -194,32 +504,7 @@ export class AppComponent {
     { id: 10, label: "Team B" },
     { id: 11, label: "Texas" },
     { id: 12, label: "Florida" },
-    { id: 13, label: "New York" },
-    { id: 14, label: "Washington" },
   ];
-
-  // Variation data
-  emptySelection: MultiSelectItem[] = [];
-
-  readOnlySelection: MultiSelectItem[] = [
-    { id: 101, label: "React" },
-    { id: 102, label: "TypeScript" },
-    { id: 103, label: "Angular" },
-  ];
-
-  skillsOptions: MultiSelectItem[] = [
-    { id: 101, label: "React" },
-    { id: 102, label: "TypeScript" },
-    { id: 103, label: "Angular" },
-    { id: 104, label: "Bootstrap" },
-    { id: 105, label: "ng-select" },
-  ];
-
-  // Reactive form
-  departmentControl = new FormControl<MultiSelectItem[]>([
-    { id: 201, label: "Engineering" },
-    { id: 202, label: "Marketing" },
-  ]);
 
   departmentOptions: MultiSelectItem[] = [
     { id: 201, label: "Engineering" },
@@ -227,15 +512,34 @@ export class AppComponent {
     { id: 203, label: "Sales" },
     { id: 204, label: "Support" },
     { id: 205, label: "Operations" },
-    { id: 206, label: "Finance" },
-    { id: 207, label: "Human Resources" },
+    { id: 206, label: "Human Resources" },
+    { id: 207, label: "Finance" },
+    { id: 208, label: "Research & Development" },
   ];
 
-  onSelectionChange(items: MultiSelectItem[]): void {
-    console.log("Selection changed:", items);
-  }
-
-  clearForm(): void {
-    this.departmentControl.setValue([]);
-  }
+  institutionOptions: MultiSelectItem[] = [
+    {
+      id: 1,
+      label:
+        "University of California Berkeley - School of Optometry - TIN 12353843",
+    },
+    {
+      id: 2,
+      label:
+        "Stanford University Medical Center - Department of Ophthalmology - TIN 98765432",
+    },
+    {
+      id: 3,
+      label:
+        "Harvard Medical School - Massachusetts Eye and Ear - TIN 11223344",
+    },
+    {
+      id: 4,
+      label: "UCLA Jules Stein Eye Institute - TIN 55667788",
+    },
+    {
+      id: 5,
+      label: "UCSF Department of Ophthalmology - TIN 99887766",
+    },
+  ];
 }
