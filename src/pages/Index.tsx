@@ -227,29 +227,6 @@ const Index = () => {
               </div>
             </div>
 
-            {/* Disabled State */}
-            <div>
-              <h3 className="text-lg font-medium text-gray-900 mb-3">
-                Disabled State
-              </h3>
-              <p className="text-gray-600 mb-4">
-                When the component is disabled, users cannot interact with it.
-              </p>
-              <div className="border border-gray-200 rounded-lg p-6">
-                <MultiSelect
-                  label="Skills"
-                  value={[
-                    { id: 101, label: "React" },
-                    { id: 102, label: "TypeScript" },
-                    { id: 103, label: "TailwindCSS" },
-                  ]}
-                  options={[]}
-                  onChange={() => {}}
-                  disabled={true}
-                />
-              </div>
-            </div>
-
             {/* Read-only State */}
             <div>
               <h3 className="text-lg font-medium text-gray-900 mb-3">
