@@ -208,7 +208,7 @@ const Index = () => {
             The most basic usage of MultiSelect with default settings.
           </p>
 
-          <div className="border border-gray-200 rounded-lg p-6 bg-gray-50">
+          <div className="border border-gray-200 rounded-lg p-6">
             <MultiSelect
               label="Tags"
               value={basicSelection}
