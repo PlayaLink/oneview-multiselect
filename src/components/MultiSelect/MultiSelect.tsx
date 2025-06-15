@@ -136,7 +136,6 @@ export const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(
       orientation,
       size,
       label = "Tags",
-      labelPosition = "left",
       value = [],
       options = [],
       onChange,
