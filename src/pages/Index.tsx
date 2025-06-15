@@ -267,10 +267,6 @@ const Index = () => {
                   searchPlaceholder="Search departments..."
                 />
               </div>
-              <div className="mt-2 text-sm text-gray-500">
-                Selected: {verticalSelection.length} department
-                {verticalSelection.length !== 1 ? "s" : ""}
-              </div>
             </div>
           </div>
         </section>
