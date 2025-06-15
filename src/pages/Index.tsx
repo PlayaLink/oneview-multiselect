@@ -186,9 +186,6 @@ const Index = () => {
         {/* States */}
         <section className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">States</h2>
-          <p className="text-gray-600 mb-6">
-            Different states of the MultiSelect component.
-          </p>
 
           <div className="space-y-8">
             {/* Empty State */}
@@ -196,9 +193,6 @@ const Index = () => {
               <h3 className="text-lg font-medium text-gray-900 mb-3">
                 Empty State
               </h3>
-              <p className="text-gray-600 mb-4">
-                When no items are selected, users can search and add new items.
-              </p>
               <div className="border border-gray-200 rounded-lg p-6">
                 <MultiSelect
                   label="Categories"
