@@ -236,6 +236,33 @@ const Index = () => {
               </div>
             </div>
           </div>
+
+          {/* Badges and Add button wrap */}
+          <div className="mt-8">
+            <div className="w-1/2">
+              <h3 className="text-lg font-medium text-gray-900 mb-3">
+                Badges and Add button wrap
+              </h3>
+              <div className="border border-gray-200 rounded-lg p-6">
+                <MultiSelect
+                  orientation="horizontal"
+                  label="Technologies"
+                  value={wrapSelection}
+                  options={[
+                    ...wrapSelection,
+                    { id: 408, label: "Vue.js" },
+                    { id: 409, label: "Angular" },
+                    { id: 410, label: "Docker" },
+                    { id: 411, label: "Redis" },
+                    { id: 412, label: "GraphQL" },
+                  ]}
+                  onChange={setWrapSelection}
+                  addButtonText="Add Technology"
+                  searchPlaceholder="Search technologies..."
+                />
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* Layout */}
