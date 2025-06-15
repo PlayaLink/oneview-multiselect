@@ -277,20 +277,17 @@ const Index = () => {
             Custom UI for selected items
           </h2>
           <p className="text-gray-600 mb-6">
-            MultiSelect has a selectedItemUI prop that accepts different UI
-            designs for displaying selected items.
+            MultiSelect has a selectedItemUI prop that can accept a custom
+            component for displaying different UI for selected items, depending
+            on the needs of the input.&nbsp;
           </p>
 
           <div className="grid md:grid-cols-2 gap-8">
             {/* Inline Badges */}
             <div>
               <h3 className="text-lg font-medium text-gray-900 mb-3">
-                Inline Badges
+                Inline Badges (default)
               </h3>
-              <p className="text-gray-600 mb-4">
-                Display selected items as compact inline badges (default
-                design).
-              </p>
               <div className="border border-gray-200 rounded-lg p-6">
                 <MultiSelect
                   label="Tags"
