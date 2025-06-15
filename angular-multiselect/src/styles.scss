@@ -116,3 +116,19 @@ pre code {
   font-weight: 500;
   font-size: 0.8em;
 }
+
+/* Custom spacing utilities */
+.space-y-4 > * + * {
+  margin-top: 1.5rem;
+}
+
+.w-50 {
+  width: 50% !important;
+}
+
+/* Additional responsive utilities */
+@media (max-width: 768px) {
+  .w-50 {
+    width: 100% !important;
+  }
+}
