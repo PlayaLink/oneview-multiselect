@@ -45,10 +45,7 @@ export interface MultiSelectProps
    * Label displayed next to the component
    */
   label?: string;
-  /**
-   * Position of the label relative to the input
-   */
-  labelPosition?: "left" | "right";
+
   /**
    * Currently selected items
    */
