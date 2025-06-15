@@ -231,9 +231,6 @@ const Index = () => {
         {/* Layout */}
         <section className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">Layout</h2>
-          <p className="text-gray-600 mb-6">
-            Different layout configurations and orientations.
-          </p>
 
           <div className="grid md:grid-cols-2 gap-8">
             {/* Horizontal Layout */}
@@ -241,9 +238,6 @@ const Index = () => {
               <h3 className="text-lg font-medium text-gray-900 mb-3">
                 Horizontal
               </h3>
-              <p className="text-gray-600 mb-4">
-                Label and input positioned side by side (default layout).
-              </p>
               <div className="border border-gray-200 rounded-lg p-6">
                 <MultiSelect
                   orientation="horizontal"
