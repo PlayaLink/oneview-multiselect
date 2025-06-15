@@ -30,6 +30,13 @@ const Index = () => {
     { id: 102, label: "Utah" },
   ]);
 
+  const [inlineBadgeSelection, setInlineBadgeSelection] = useState<
+    MultiSelectItem[]
+  >([
+    { id: 301, label: "Design" },
+    { id: 302, label: "Frontend" },
+    { id: 303, label: "Backend" },
+  ]);
   const [fullWidthSelection, setFullWidthSelection] = useState<
     MultiSelectItem[]
   >([
