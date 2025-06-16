@@ -209,12 +209,8 @@
                         transition: background-color 0.2s ease;
                       "
                       (click)="onRemove()"
-                      (mouseenter)="
-                        ($event.target as HTMLElement).style.backgroundColor = '#fee2e2'
-                      "
-                      (mouseleave)="
-                        ($event.target as HTMLElement).style.backgroundColor = 'transparent'
-                      "
+                      (mouseenter)="onMouseEnter($event)"
+                      (mouseleave)="onMouseLeave($event)"
                       [attr.aria-label]="'Remove ' + item.label"
                     >
                       <svg
