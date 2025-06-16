@@ -232,12 +232,8 @@ import { MultiSelectItem } from "./models/multi-select-item.interface";
                             transition: background-color 0.2s ease;
                           "
                           (click)="onRemove()"
-                          (mouseenter)="
-                            ($event.target as HTMLElement).style.backgroundColor = '#fee2e2'
-                          "
-                          (mouseleave)="
-                            ($event.target as HTMLElement).style.backgroundColor = 'transparent'
-                          "
+                          (mouseenter)="($event.target as HTMLElement).style.backgroundColor = '#fee2e2'"
+                          (mouseleave)="($event.target as HTMLElement).style.backgroundColor = 'transparent'"
                           [attr.aria-label]="'Remove ' + item.label"
                         >
                           <svg
