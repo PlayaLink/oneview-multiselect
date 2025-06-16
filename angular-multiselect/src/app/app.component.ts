@@ -233,10 +233,10 @@ import { MultiSelectItem } from "./models/multi-select-item.interface";
                           "
                           (click)="onRemove()"
                           (mouseenter)="
-                            $event.target.style.backgroundColor = '#fee2e2'
+                            ($event.target as HTMLElement).style.backgroundColor = '#fee2e2'
                           "
                           (mouseleave)="
-                            $event.target.style.backgroundColor = 'transparent'
+                            ($event.target as HTMLElement).style.backgroundColor = 'transparent'
                           "
                           [attr.aria-label]="'Remove ' + item.label"
                         >
