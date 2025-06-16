@@ -145,4 +145,14 @@ export class AppComponent {
       label: "UCSF Department of Ophthalmology - TIN 99887766",
     },
   ];
+
+  onMouseEnter(event: MouseEvent): void {
+    const target = event.target as HTMLElement;
+    target.style.backgroundColor = "#fee2e2";
+  }
+
+  onMouseLeave(event: MouseEvent): void {
+    const target = event.target as HTMLElement;
+    target.style.backgroundColor = "transparent";
+  }
 }
