@@ -6,7 +6,7 @@ A modern, accessible multi-select component with tags and dropdown functionality
 
 ### Prerequisites
 
-- Node.js (v18 or higher)
+- Node.js (v18 or higher recommended)
 - Angular CLI (v17 or higher)
 
 ### Installation & Running
@@ -32,15 +32,16 @@ A modern, accessible multi-select component with tags and dropdown functionality
    ```
 
 4. **Open your browser:**
-   Navigate to `http://localhost:4200`
+   Navigate to `http://localhost:4200` to see the full documentation and interactive examples.
 
 ### Available Scripts
 
-- `npm start` - Start development server
+- `npm start` - Start development server (runs on http://localhost:4200)
 - `npm run build` - Build for production
 - `npm run watch` - Build in watch mode
 - `npm test` - Run unit tests
 - `npm run lint` - Run linting
+- `ng version` - Check Angular CLI and project versions
 
 ## 📁 Project Structure
 
@@ -56,7 +57,9 @@ angular-multiselect/
 │   │   │       └── tag.component.ts
 │   │   ├── models/
 │   │   │   └── multi-select-item.interface.ts
-│   │   └── app.component.ts            # Demo/documentation page
+│   │   ├── app.component.ts            # Demo/documentation page
+│   │   ├── app.component.html          # Demo template
+│   │   └── app.module.ts               # Module configuration
 │   ├── index.html
 │   ├── main.ts
 │   └── styles.scss
@@ -211,6 +214,8 @@ this.form = this.fb.group({
 npm run build
 ```
 
+Build artifacts will be stored in the `dist/` directory.
+
 ### Run Tests
 
 ```bash
@@ -222,6 +227,16 @@ npm test
 ```bash
 npm run lint
 ```
+
+## 🚀 Live Demo
+
+After running `npm start`, the development server provides a comprehensive demo showcasing:
+
+- **States**: Empty state, read-only mode
+- **Layouts**: Horizontal, vertical, badge wrapping
+- **Custom UI**: Inline badges (default) and block elements (custom)
+- **Form Integration**: Reactive forms support
+- **Documentation**: Complete inputs table and usage examples
 
 ## 📱 Browser Support
 
