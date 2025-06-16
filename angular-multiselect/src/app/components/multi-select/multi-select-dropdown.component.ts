@@ -108,6 +108,8 @@ import { MultiSelectItem } from "../../models/multi-select-item.interface";
         overflow: hidden;
         display: flex;
         flex-direction: column;
+        min-width: 200px;
+        max-width: 400px;
       }
 
       .search-container {
