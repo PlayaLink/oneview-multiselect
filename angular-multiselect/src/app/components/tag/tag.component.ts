@@ -58,7 +58,7 @@ import { TagVariant } from "../../models/multi-select-item.interface";
         align-items: center;
         gap: 4px;
         padding: 4px 8px;
-        border-radius: 4px;
+        border-radius: 2px;
         font-size: 12px;
         font-weight: 400;
         letter-spacing: 0.429px;
@@ -68,6 +68,8 @@ import { TagVariant } from "../../models/multi-select-item.interface";
 
       .tag-label {
         flex: 1;
+        padding: 4px 8px;
+        line-height: 12px;
       }
 
       .tag-remove-btn {
@@ -81,6 +83,9 @@ import { TagVariant } from "../../models/multi-select-item.interface";
         cursor: pointer;
         border-radius: 2px;
         transition: background-color 0.2s ease;
+        border-left: 1px solid #afd6ff;
+        height: 18px;
+        width: 18px;
       }
 
       .tag-remove-btn:hover {
@@ -88,8 +93,8 @@ import { TagVariant } from "../../models/multi-select-item.interface";
       }
 
       .tag-remove-icon {
-        width: 12px;
-        height: 12px;
+        width: 8px;
+        height: 8px;
       }
 
       .tag-spinner {
@@ -113,7 +118,7 @@ import { TagVariant } from "../../models/multi-select-item.interface";
         }
       }
 
-      /* Variant styles */
+      /* Variant styles - exact match to React version */
       .tag-default {
         background-color: #e8f3ff;
         color: #212529;
