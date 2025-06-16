@@ -22,7 +22,12 @@ import { MultiSelectItem } from "./models/multi-select-item.interface";
         <header class="mb-5">
           <h1 class="display-4 fw-bold text-dark mb-3">MultiSelect</h1>
           <p class="lead text-muted mb-4">
-            This input will initially only support the Tags input in the side panel of OneView V2. But it should be built with the intention of support other multi-select inputs that have different requirements for orientation (i.e. label placed above the input vs to the left) and the UI that is displayed for selected values. See below for more details.
+            This input will initially only support the Tags input in the side
+            panel of OneView V2. But it should be built with the intention of
+            support other multi-select inputs that have different requirements
+            for orientation (i.e. label placed above the input vs to the left)
+            and the UI that is displayed for selected values. See below for more
+            details.
           </p>
           <div class="border rounded p-4">
             <app-multi-select
@@ -113,7 +118,9 @@ import { MultiSelectItem } from "./models/multi-select-item.interface";
           <!-- Badges (and Add button) wrap -->
           <div class="mt-4">
             <div class="w-50">
-              <h3 class="h5 fw-medium text-dark mb-3">Badges (and Add button) wrap</h3>
+              <h3 class="h5 fw-medium text-dark mb-3">
+                Badges (and Add button) wrap
+              </h3>
               <div class="border rounded p-4">
                 <app-multi-select
                   orientation="horizontal"
@@ -131,15 +138,21 @@ import { MultiSelectItem } from "./models/multi-select-item.interface";
 
         <!-- Custom UI for selected items -->
         <section class="mb-5">
-          <h2 class="h3 fw-semibold text-dark mb-3">Custom UI for selected items</h2>
+          <h2 class="h3 fw-semibold text-dark mb-3">
+            Custom UI for selected items
+          </h2>
           <p class="text-muted mb-4">
-            MultiSelect has a selectedItemUI prop that can accept a custom component for displaying different UI for selected items, depending on the needs of the input.
+            MultiSelect has a selectedItemUI prop that can accept a custom
+            component for displaying different UI for selected items, depending
+            on the needs of the input.
           </p>
 
           <div class="row g-4">
             <!-- Inline Badges (default) -->
             <div class="col-md-6">
-              <h3 class="h5 fw-medium text-dark mb-3">Inline Badges (default)</h3>
+              <h3 class="h5 fw-medium text-dark mb-3">
+                Inline Badges (default)
+              </h3>
               <div class="border rounded p-4">
                 <app-multi-select
                   label="Tags"
@@ -154,7 +167,9 @@ import { MultiSelectItem } from "./models/multi-select-item.interface";
 
             <!-- Block element (custom) -->
             <div class="col-md-6">
-              <h3 class="h5 fw-medium text-dark mb-3">Block element (custom)</h3>
+              <h3 class="h5 fw-medium text-dark mb-3">
+                Block element (custom)
+              </h3>
               <div class="border rounded p-4">
                 <app-multi-select
                   label="Institutions"
@@ -171,7 +186,9 @@ import { MultiSelectItem } from "./models/multi-select-item.interface";
                     let-removable="removable"
                     let-onRemove="onRemove"
                   >
-                    <div class="d-flex w-100 align-items-start gap-2 p-2 align-self-stretch">
+                    <div
+                      class="d-flex w-100 align-items-start gap-2 p-2 align-self-stretch"
+                    >
                       <div
                         class="flex-fill"
                         style="
@@ -252,7 +269,8 @@ import { MultiSelectItem } from "./models/multi-select-item.interface";
         <section class="mb-5">
           <h2 class="h3 fw-semibold text-dark mb-3">Inputs</h2>
           <p class="text-muted mb-4">
-            Complete list of inputs available for the Angular MultiSelect component.
+            Complete list of inputs available for the Angular MultiSelect
+            component.
           </p>
 
           <div class="table-responsive">
@@ -336,26 +354,45 @@ import { MultiSelectItem } from "./models/multi-select-item.interface";
                   <td><code class="text-primary">fullWidthButton</code></td>
                   <td><code>boolean</code></td>
                   <td><code>false</code></td>
-                  <td>Whether the add button should take full width on its own line</td>
+                  <td>
+                    Whether the add button should take full width on its own
+                    line
+                  </td>
                 </tr>
               </tbody>
             </table>
           </div>
 
           <div class="alert alert-info mt-4">
-            <strong>Note:</strong> Inputs marked with * are required. The MultiSelectItem interface contains:
+            <strong>Note:</strong> Inputs marked with * are required. The
+            MultiSelectItem interface contains:
             <code>
-              &#123; id: string | number; label: string; disabled?: boolean &#125;
+              &#123; id: string | number; label: string; disabled?: boolean
+              &#125;
             </code>
           </div>
 
           <div class="alert alert-secondary mt-3">
             <h6 class="fw-semibold">Angular-Specific Features:</h6>
             <ul class="mb-0">
-              <li><strong>@Output() valueChange:</strong> EventEmitter&lt;MultiSelectItem[]&gt; - Emits when selection changes</li>
-              <li><strong>ControlValueAccessor:</strong> Full reactive forms integration support</li>
-              <li><strong>Custom Templates:</strong> Use <code>&#60;ng-template #selectedItem&#62;</code> for custom selected item UI</li>
-              <li><strong>Change Detection:</strong> Optimized with OnPush strategy</li>
+              <li>
+                <strong>&#64;Output() valueChange:</strong>
+                EventEmitter&lt;MultiSelectItem[]&gt; - Emits when selection
+                changes
+              </li>
+              <li>
+                <strong>ControlValueAccessor:</strong> Full reactive forms
+                integration support
+              </li>
+              <li>
+                <strong>Custom Templates:</strong> Use
+                <code>&#60;ng-template #selectedItem&#62;</code> for custom
+                selected item UI
+              </li>
+              <li>
+                <strong>Change Detection:</strong> Optimized with OnPush
+                strategy
+              </li>
             </ul>
           </div>
         </section>
@@ -412,7 +449,9 @@ import { MultiSelectItem } from "./models/multi-select-item.interface";
         <!-- Installation -->
         <section class="mb-5">
           <h2 class="h3 fw-semibold text-dark mb-3">Installation</h2>
-          <pre class="bg-dark text-light p-3 rounded overflow-auto"><code>import &#123; MultiSelectComponent &#125; from './components/multi-select/multi-select.component';</code></pre>
+          <pre
+            class="bg-dark text-light p-3 rounded overflow-auto"
+          ><code>import &#123; MultiSelectComponent &#125; from './components/multi-select/multi-select.component';</code></pre>
         </section>
       </div>
     </div>
