@@ -39,7 +39,7 @@ export interface SelectedItemUIProps {
 }
 
 export interface MultiSelectProps
-  extends React.HTMLAttributes<HTMLDivElement>,
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, "onChange">,
     VariantProps<typeof multiSelectVariants> {
   /**
    * Label displayed next to the component
