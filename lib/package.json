@@ -1,0 +1,83 @@
+{
+  "name": "@oneview/react-multiselect",
+  "version": "1.0.0",
+  "description": "Modern React MultiSelect component with tags, search, and custom templates for OneView V2",
+  "keywords": [
+    "react",
+    "multiselect",
+    "tags",
+    "typescript",
+    "tailwind",
+    "component",
+    "oneview",
+    "ui"
+  ],
+  "homepage": "https://github.com/jordanchghealthcare/react-multiselect#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jordanchghealthcare/react-multiselect.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jordanchghealthcare/react-multiselect/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "OneView V2 Team",
+    "email": "jordan@chghealthcare.com"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./styles": "./dist/styles.css"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src --ext .ts,.tsx",
+    "prepublishOnly": "npm run build",
+    "test": "vitest run"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "dependencies": {
+    "@radix-ui/react-popover": "^1.1.1",
+    "@radix-ui/react-slot": "^1.1.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.462.0",
+    "tailwind-merge": "^2.5.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.5",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^8.57.0",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.11",
+    "tsup": "^8.0.0",
+    "typescript": "^5.5.3",
+    "vitest": "^3.1.4"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}
