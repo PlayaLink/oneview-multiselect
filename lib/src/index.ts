@@ -11,5 +11,13 @@ export type {
   SelectedItemUIContext,
 } from "./types";
 
+// Component-specific prop types
+export type {
+  SelectedItemUIProps,
+  MultiSelectProps,
+} from "./components/MultiSelect";
+export type { TagProps } from "./components/Tag";
+
 // Utility exports
 export { cn } from "./lib/utils";
+export { tagVariants } from "./components/Tag";
