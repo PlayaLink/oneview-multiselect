@@ -132,6 +132,7 @@ const DefaultSelectedItemUI: React.FC<SelectedItemUIProps> = ({
  * MultiSelect Component
  *
  * A modern, accessible multi-select component with tags and dropdown functionality.
+ * Built with React, TypeScript, and Tailwind CSS.
  *
  * @example
  * ```tsx
