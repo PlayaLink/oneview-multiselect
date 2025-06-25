@@ -63,7 +63,7 @@ import {
   MultiSelect,
   Tag,
   type MultiSelectItem,
-} from "@oneview/react-multiselect";
+} from "oneview-react-multiselect";
 
 // Custom selected item component
 const CustomSelectedItem = ({ item, onRemove, removable }) => (
@@ -204,7 +204,7 @@ npm install tailwindcss @tailwindcss/typography
 ### Tag Variants
 
 ```tsx
-import { Tag } from "@oneview/react-multiselect";
+import { Tag } from "oneview-react-multiselect";
 
 <Tag label="Default" variant="default" />
 <Tag label="Success" variant="success" />
