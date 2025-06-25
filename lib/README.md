@@ -1,6 +1,6 @@
-# @oneview/react-multiselect
+# oneview-react-multiselect
 
-[![npm version](https://img.shields.io/npm/v/@oneview/react-multiselect.svg)](https://www.npmjs.com/package/@oneview/react-multiselect)
+[![npm version](https://img.shields.io/npm/v/oneview-react-multiselect.svg)](https://www.npmjs.com/package/oneview-react-multiselect)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.5+-blue?logo=typescript)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-16.8+-61DAFB?logo=react)](https://reactjs.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.0+-38B2AC?logo=tailwind-css)](https://tailwindcss.com/)
@@ -21,7 +21,7 @@ A modern, accessible React MultiSelect component with tags, search, and custom t
 ## 🚀 Installation
 
 ```bash
-npm install @oneview/react-multiselect
+npm install oneview-react-multiselect
 ```
 
 ## 📖 Usage
@@ -30,7 +30,7 @@ npm install @oneview/react-multiselect
 
 ```tsx
 import React, { useState } from "react";
-import { MultiSelect, type MultiSelectItem } from "@oneview/react-multiselect";
+import { MultiSelect, type MultiSelectItem } from "oneview-react-multiselect";
 
 function App() {
   const [selectedItems, setSelectedItems] = useState<MultiSelectItem[]>([]);
