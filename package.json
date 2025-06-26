@@ -1,6 +1,8 @@
 {
-  "name": "fusion-starter",
+  "name": "oneview-react-multiselect-docs",
   "private": true,
+  "description": "Interactive documentation for oneview-react-multiselect NPM package",
+  "homepage": "https://YOUR_DEPLOYED_URL_HERE",
   "type": "module",
   "scripts": {
     "dev": "vite",
