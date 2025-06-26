@@ -7,6 +7,10 @@
 
 A modern, accessible React MultiSelect component with tags, search, and custom templates. Built for **OneView V2** with enterprise-grade features and beautiful design.
 
+## 📖 **[Live Documentation & Examples →](https://YOUR_DEPLOYED_URL_HERE)**
+
+**Interactive documentation with live examples, API reference, and code samples.**
+
 ## ✨ Features
 
 - 🔍 **Search & Filter** - Built-in search with real-time filtering
