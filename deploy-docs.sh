@@ -1,0 +1,36 @@
+#!/bin/bash
+
+echo "🚀 Deploying MultiSelect Documentation..."
+
+# Build the React documentation site
+echo "📦 Building React app..."
+npm run build
+
+echo "✅ Build complete!"
+echo ""
+echo "🌐 Next steps for deployment:"
+echo ""
+echo "Option 1 - Vercel (Recommended):"
+echo "  1. Install: npm install -g vercel"
+echo "  2. Login: vercel login"
+echo "  3. Deploy: vercel"
+echo ""
+echo "Option 2 - Netlify:"
+echo "  1. Go to: https://app.netlify.com/drop"
+echo "  2. Drag and drop the 'dist' folder"
+echo ""
+echo "Option 3 - GitHub Pages:"
+echo "  1. npm install --save-dev gh-pages"
+echo "  2. Add to package.json scripts: \"deploy\": \"gh-pages -d dist\""
+echo "  3. npm run deploy"
+echo ""
+echo "🔗 After deployment:"
+echo "  1. Copy your live URL"
+echo "  2. Replace 'YOUR_DEPLOYED_URL_HERE' in:"
+echo "     - lib/README.md"
+echo "     - package.json"
+echo "  3. Update NPM package:"
+echo "     cd lib"
+echo "     npm version patch"
+echo "     npm run build"
+echo "     npm publish"
