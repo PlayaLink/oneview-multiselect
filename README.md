@@ -12,6 +12,24 @@ This input component was initially designed to support the **Tags input in the s
 
 ## 🚀 Quick Start
 
+### 📥 Clone from GitHub
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/oneview-react-multiselect-docs.git
+cd oneview-react-multiselect-docs
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Open browser to http://localhost:8080
+```
+
+**📖 For detailed setup instructions, see [LOCAL_SETUP.md](LOCAL_SETUP.md)**
+
 ### React Version (Main)
 
 ```bash
@@ -21,7 +39,7 @@ npm install
 # Start development server
 npm run dev
 
-# Open browser to http://localhost:5173
+# Open browser to http://localhost:8080
 ```
 
 ### Angular Version
