@@ -323,22 +323,30 @@ const Index = () => {
                 <p className="text-gray-700 mb-4">
                   This is a live demonstration of the{" "}
                   <strong>oneview-react-multiselect-component</strong> package
-                  imported directly from NPM - exactly how developers would use
-                  it in their projects. No local imports, no development builds
-                  - just the real deal!
+                  imported from the built distribution - exactly how developers
+                  would use it after installing from NPM. No local source
+                  imports, no development builds - just the production-ready
+                  package!
                 </p>
 
                 <div className="bg-white border border-purple-200 rounded-lg p-4 mb-4">
                   <div className="flex items-center gap-3 mb-2">
                     <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                     <span className="text-sm font-semibold text-gray-900">
-                      Live NPM Package Import
+                      Built Package Import (Production Ready)
                     </span>
                   </div>
                   <code className="text-sm text-purple-700 bg-purple-50 px-2 py-1 rounded">
                     import &#123; MultiSelect &#125; from
                     "oneview-react-multiselect-component"
                   </code>
+                  <div className="text-xs text-gray-600 mt-2">
+                    🔧 Currently using:{" "}
+                    <code className="bg-gray-100 px-1 rounded">
+                      lib/dist/index.js
+                    </code>{" "}
+                    (same as NPM package)
+                  </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
