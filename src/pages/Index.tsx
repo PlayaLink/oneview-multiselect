@@ -15,12 +15,21 @@ import {
 } from "../../lib/src/index";
 
 // Import from the actual NPM package (installed locally)
+// Temporarily commented out due to React context conflicts
+// import {
+//   MultiSelect as RealNPMMultiSelect,
+//   Tag as RealNPMTag,
+//   type MultiSelectItem as RealNPMMultiSelectItem,
+//   type SelectedItemUIProps as RealNPMSelectedItemUIProps,
+// } from "oneview-react-multiselect-component";
+
+// Use the built package from lib/dist instead (simulates NPM package)
 import {
   MultiSelect as RealNPMMultiSelect,
   Tag as RealNPMTag,
   type MultiSelectItem as RealNPMMultiSelectItem,
   type SelectedItemUIProps as RealNPMSelectedItemUIProps,
-} from "oneview-react-multiselect-component";
+} from "../../lib/dist/index.js";
 
 const Index = () => {
   // State for various examples
