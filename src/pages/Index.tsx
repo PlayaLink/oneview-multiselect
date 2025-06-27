@@ -457,7 +457,7 @@ const Index = () => {
                   searchPlaceholder="Search features..."
                 />
                 <div className="mt-3 text-xs text-purple-700 bg-purple-50 px-3 py-2 rounded-md">
-                  📦 Start with empty selection
+                  📦 Empty state from built package
                 </div>
               </div>
             </div>
