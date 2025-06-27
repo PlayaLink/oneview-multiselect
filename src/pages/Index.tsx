@@ -6,6 +6,14 @@ import {
 } from "@/components/MultiSelect";
 import { Tag } from "@/components/Tag";
 
+// Import from the built NPM package
+import {
+  MultiSelect as NPMMultiSelect,
+  Tag as NPMTag,
+  type MultiSelectItem as NPMMultiSelectItem,
+  type SelectedItemUIProps as NPMSelectedItemUIProps,
+} from "../../lib/dist/index.js";
+
 const Index = () => {
   // State for various examples
   const [basicSelection, setBasicSelection] = useState<MultiSelectItem[]>([
