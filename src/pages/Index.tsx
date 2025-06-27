@@ -98,6 +98,26 @@ const Index = () => {
     { id: 102, label: "Sales" },
   ]);
 
+  // Real NPM Package Demo State
+  const [realNpmSelection, setRealNpmSelection] = useState<
+    RealNPMMultiSelectItem[]
+  >([
+    { id: 1, label: "Production Ready" },
+    { id: 2, label: "TypeScript" },
+    { id: 3, label: "React 18" },
+  ]);
+
+  const [realNpmVerticalSelection, setRealNpmVerticalSelection] = useState<
+    RealNPMMultiSelectItem[]
+  >([
+    { id: 201, label: "Frontend" },
+    { id: 202, label: "Backend" },
+  ]);
+
+  const [realNpmEmptySelection, setRealNpmEmptySelection] = useState<
+    RealNPMMultiSelectItem[]
+  >([]);
+
   // Options data
   const basicOptions: MultiSelectItem[] = [
     { id: 1, label: "Team A" },
