@@ -541,7 +541,7 @@ const Index = () => {
                   />
                 </div>
                 <div className="mt-2 text-xs text-green-700 bg-green-100 px-2 py-1 rounded">
-                  📦 From lib/dist/index.js
+                  📦 From lib/src/index
                 </div>
               </div>
             </div>
