@@ -42,8 +42,8 @@
     "LICENSE"
   ],
   "scripts": {
-    "build": "npx tsup",
-    "dev": "npx tsup --watch",
+    "build": "tsup",
+    "dev": "tsup --watch",
     "typecheck": "tsc --noEmit",
     "lint": "eslint src --ext .ts,.tsx",
     "prepublishOnly": "npm run build",
