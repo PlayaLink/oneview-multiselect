@@ -55,9 +55,9 @@ echo "📤 Publishing to npm..."
 npm publish
 
 if [ $? -eq 0 ]; then
-    echo "🎉 Successfully published @oneview/react-multiselect!"
-    echo "📖 View on npm: https://www.npmjs.com/package/@oneview/react-multiselect"
+    echo "🎉 Successfully published oneview-react-multiselect!"
+    echo "📖 View on npm: https://www.npmjs.com/package/oneview-react-multiselect"
 else
-    echo "��� Publishing failed"
+    echo "❌ Publishing failed"
     exit 1
 fi
