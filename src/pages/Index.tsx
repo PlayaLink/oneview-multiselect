@@ -177,7 +177,7 @@ const Index = () => {
       <div className="max-w-6xl mx-auto px-6 py-8">
         {/* Header */}
         <header className="mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">MultiSelect</h1>
+          <h1 className="text-4xl font-bold text-red-500 mb-4">MultiSelect</h1>
           <p className="text-xl text-gray-600 mb-6">
             This input will initially only support the Tags input in the side
             panel of OneView V2. But it should be built with the intention of
