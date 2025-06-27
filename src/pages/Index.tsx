@@ -143,6 +143,27 @@ const Index = () => {
     },
   ];
 
+  // NPM Package options
+  const npmOptions: NPMMultiSelectItem[] = [
+    { id: 1, label: "NPM Demo A" },
+    { id: 2, label: "NPM Demo B" },
+    { id: 3, label: "React" },
+    { id: 4, label: "TypeScript" },
+    { id: 5, label: "Tailwind CSS" },
+    { id: 6, label: "Node.js" },
+    { id: 7, label: "Vite" },
+    { id: 8, label: "NPM Package" },
+  ];
+
+  const npmDepartmentOptions: NPMMultiSelectItem[] = [
+    { id: 101, label: "Marketing" },
+    { id: 102, label: "Sales" },
+    { id: 103, label: "Engineering" },
+    { id: 104, label: "Design" },
+    { id: 105, label: "Product" },
+    { id: 106, label: "Operations" },
+  ];
+
   // Custom UI components
   const FullWidthItemUI: React.FC<SelectedItemUIProps> = ({
     item,
