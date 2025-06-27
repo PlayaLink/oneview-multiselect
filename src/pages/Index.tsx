@@ -75,6 +75,21 @@ const Index = () => {
     },
   ]);
 
+  // NPM Package Demo State
+  const [npmBasicSelection, setNpmBasicSelection] = useState<
+    NPMMultiSelectItem[]
+  >([
+    { id: 1, label: "NPM Demo A" },
+    { id: 2, label: "NPM Demo B" },
+  ]);
+
+  const [npmVerticalSelection, setNpmVerticalSelection] = useState<
+    NPMMultiSelectItem[]
+  >([
+    { id: 101, label: "Marketing" },
+    { id: 102, label: "Sales" },
+  ]);
+
   // Options data
   const basicOptions: MultiSelectItem[] = [
     { id: 1, label: "Team A" },
