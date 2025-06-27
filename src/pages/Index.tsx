@@ -450,8 +450,8 @@ const Index = () => {
                   addButtonText="Add Feature"
                   searchPlaceholder="Search features..."
                 />
-                <div className="mt-3 text-xs text-green-700 bg-green-50 px-3 py-2 rounded-md">
-                  📦 Empty state from NPM package
+                <div className="mt-3 text-xs text-blue-700 bg-blue-50 px-3 py-2 rounded-md">
+                  📦 Package supports empty state perfectly
                 </div>
               </div>
             </div>
