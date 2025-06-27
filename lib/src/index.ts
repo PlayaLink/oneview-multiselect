@@ -21,3 +21,6 @@ export type { TagProps } from "./components/Tag";
 // Utility exports
 export { cn } from "./lib/utils";
 export { tagVariants } from "./components/Tag";
+
+// Default export for Figma Make compatibility
+export { MultiSelect as default } from "./components/MultiSelect";
