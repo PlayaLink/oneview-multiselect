@@ -29,7 +29,7 @@ import {
   Tag as RealNPMTag,
   type MultiSelectItem as RealNPMMultiSelectItem,
   type SelectedItemUIProps as RealNPMSelectedItemUIProps,
-} from "../../lib/dist/index.js";
+} from "../../lib/dist/index.mjs";
 
 const Index = () => {
   // State for various examples
