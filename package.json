@@ -2,7 +2,7 @@
   "name": "oneview-react-multiselect-docs",
   "private": true,
   "description": "Interactive documentation for oneview-react-multiselect NPM package",
-  "homepage": "https://YOUR_DEPLOYED_URL_HERE",
+  "homepage": "https://oneview-react-multiselect-docs.vercel.app",
   "type": "module",
   "scripts": {
     "dev": "vite",
