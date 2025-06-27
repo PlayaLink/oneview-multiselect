@@ -532,8 +532,8 @@ const Index = () => {
                     />
                   </svg>
                   <span className="text-green-400 font-semibold text-sm">
-                    ✨ That's it! The package now works perfectly in any React
-                    project.
+                    ✨ That's it! The package is ready for publishing and will
+                    work perfectly in any React project.
                   </span>
                 </div>
               </div>
