@@ -14,6 +14,14 @@ import {
   type SelectedItemUIProps as NPMSelectedItemUIProps,
 } from "../../lib/src/index";
 
+// Import from the actual NPM package (installed locally)
+import {
+  MultiSelect as RealNPMMultiSelect,
+  Tag as RealNPMTag,
+  type MultiSelectItem as RealNPMMultiSelectItem,
+  type SelectedItemUIProps as RealNPMSelectedItemUIProps,
+} from "oneview-react-multiselect-component";
+
 const Index = () => {
   // State for various examples
   const [basicSelection, setBasicSelection] = useState<MultiSelectItem[]>([
