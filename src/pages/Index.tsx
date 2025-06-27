@@ -294,6 +294,241 @@ const Index = () => {
           </div>
         </header>
 
+        {/* NPM Package "In the Wild" Demo */}
+        <section className="mb-12">
+          <div className="bg-gradient-to-r from-purple-50 to-blue-50 border border-purple-200 rounded-xl p-8">
+            <div className="flex items-start gap-4 mb-6">
+              <div className="bg-purple-100 p-3 rounded-lg">
+                <svg
+                  className="w-8 h-8 text-purple-600"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M12 2L2 7v10c0 6 5 8 10 8s10-2 10-8V7l-10-5zM12 5.84L19.09 9 12 12.16 4.91 9 12 5.84z" />
+                </svg>
+              </div>
+              <div className="flex-1">
+                <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                  🚀 NPM Package "In the Wild"
+                </h2>
+                <p className="text-gray-700 mb-4">
+                  This is a live demonstration of the{" "}
+                  <strong>oneview-react-multiselect-component</strong> package
+                  imported directly from NPM - exactly how developers would use
+                  it in their projects. No local imports, no development builds
+                  - just the real deal!
+                </p>
+
+                <div className="bg-white border border-purple-200 rounded-lg p-4 mb-4">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                    <span className="text-sm font-semibold text-gray-900">
+                      Live NPM Package Import
+                    </span>
+                  </div>
+                  <code className="text-sm text-purple-700 bg-purple-50 px-2 py-1 rounded">
+                    import &#123; MultiSelect &#125; from
+                    "oneview-react-multiselect-component"
+                  </code>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
+                  <div className="flex items-center gap-2">
+                    <svg
+                      className="w-4 h-4 text-green-600"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                    <span className="text-gray-700">TypeScript ready</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <svg
+                      className="w-4 h-4 text-green-600"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                    <span className="text-gray-700">Zero config</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <svg
+                      className="w-4 h-4 text-green-600"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                    <span className="text-gray-700">Production ready</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid lg:grid-cols-3 gap-6">
+              {/* Live NPM Package Demo - Basic */}
+              <div className="bg-white border border-purple-200 rounded-lg p-6">
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    Basic Usage
+                  </h3>
+                </div>
+                <RealNPMMultiSelect
+                  label="Tech Stack"
+                  value={realNpmSelection}
+                  options={realNpmOptions}
+                  onChange={setRealNpmSelection}
+                  addButtonText="Add Technology"
+                  searchPlaceholder="Search technologies..."
+                />
+                <div className="mt-3 text-xs text-purple-700 bg-purple-50 px-3 py-2 rounded-md">
+                  📦 From NPM package: oneview-react-multiselect-component
+                </div>
+              </div>
+
+              {/* Live NPM Package Demo - Vertical */}
+              <div className="bg-white border border-purple-200 rounded-lg p-6">
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    Vertical Layout
+                  </h3>
+                </div>
+                <RealNPMMultiSelect
+                  orientation="vertical"
+                  label="Teams"
+                  value={realNpmVerticalSelection}
+                  options={realNpmTeamOptions}
+                  onChange={setRealNpmVerticalSelection}
+                  addButtonText="Add Team"
+                  searchPlaceholder="Search teams..."
+                />
+                <div className="mt-3 text-xs text-purple-700 bg-purple-50 px-3 py-2 rounded-md">
+                  📦 Vertical orientation from NPM package
+                </div>
+              </div>
+
+              {/* Live NPM Package Demo - Empty State */}
+              <div className="bg-white border border-purple-200 rounded-lg p-6">
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    Empty State
+                  </h3>
+                </div>
+                <RealNPMMultiSelect
+                  label="Features"
+                  value={realNpmEmptySelection}
+                  options={realNpmOptions.slice(5)}
+                  onChange={setRealNpmEmptySelection}
+                  addButtonText="Add Feature"
+                  searchPlaceholder="Search features..."
+                />
+                <div className="mt-3 text-xs text-purple-700 bg-purple-50 px-3 py-2 rounded-md">
+                  📦 Start with empty selection
+                </div>
+              </div>
+            </div>
+
+            {/* Installation Instructions */}
+            <div className="mt-8 bg-gray-900 text-white rounded-lg p-6">
+              <h3 className="text-lg font-semibold mb-4 text-gray-100">
+                💻 Get Started in Seconds
+              </h3>
+              <div className="space-y-4">
+                <div>
+                  <div className="text-sm text-gray-400 mb-2">
+                    1. Install the package
+                  </div>
+                  <div className="bg-gray-800 rounded px-4 py-2 font-mono text-sm text-green-400">
+                    npm install oneview-react-multiselect-component
+                  </div>
+                </div>
+                <div>
+                  <div className="text-sm text-gray-400 mb-2">
+                    2. Import and use
+                  </div>
+                  <div className="bg-gray-800 rounded px-4 py-3 font-mono text-sm">
+                    <div className="text-blue-400">import</div>{" "}
+                    <span className="text-yellow-400">
+                      &#123; MultiSelect &#125;
+                    </span>{" "}
+                    <div className="text-blue-400">from</div>{" "}
+                    <span className="text-green-400">
+                      "oneview-react-multiselect-component"
+                    </span>
+                    <br />
+                    <br />
+                    <span className="text-purple-400">&lt;MultiSelect</span>
+                    <br />
+                    <span className="text-gray-300 ml-4">
+                      label<span className="text-blue-400">=</span>
+                      <span className="text-green-400">"Tags"</span>
+                    </span>
+                    <br />
+                    <span className="text-gray-300 ml-4">
+                      value<span className="text-blue-400">=</span>
+                      <span className="text-yellow-400">
+                        &#123;selected&#125;
+                      </span>
+                    </span>
+                    <br />
+                    <span className="text-gray-300 ml-4">
+                      options<span className="text-blue-400">=</span>
+                      <span className="text-yellow-400">
+                        &#123;options&#125;
+                      </span>
+                    </span>
+                    <br />
+                    <span className="text-gray-300 ml-4">
+                      onChange<span className="text-blue-400">=</span>
+                      <span className="text-yellow-400">
+                        &#123;setSelected&#125;
+                      </span>
+                    </span>
+                    <br />
+                    <span className="text-purple-400">/&gt;</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-4 p-3 bg-green-900/20 border border-green-700 rounded-lg">
+                <div className="flex items-center gap-2">
+                  <svg
+                    className="w-5 h-5 text-green-400"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  <span className="text-green-400 font-semibold text-sm">
+                    ✨ That's it! No additional configuration required.
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* States */}
         <section className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">States</h2>
