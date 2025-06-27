@@ -6,13 +6,13 @@ import {
 } from "@/components/MultiSelect";
 import { Tag } from "@/components/Tag";
 
-// Import from the built NPM package
+// Import from the built NPM package source (for testing)
 import {
   MultiSelect as NPMMultiSelect,
   Tag as NPMTag,
   type MultiSelectItem as NPMMultiSelectItem,
   type SelectedItemUIProps as NPMSelectedItemUIProps,
-} from "../../lib/dist/index.mjs";
+} from "../../lib/src/index";
 
 const Index = () => {
   // State for various examples
