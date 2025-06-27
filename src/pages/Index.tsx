@@ -178,7 +178,7 @@ const Index = () => {
         {/* Header */}
         <header className="mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">MultiSelect</h1>
-          <p className="text-xl text-gray-600 mb-4">
+          <p className="text-xl text-gray-600 mb-6">
             This input will initially only support the Tags input in the side
             panel of OneView V2. But it should be built with the intention of
             support other multi-select inputs that have different requirements
@@ -186,18 +186,6 @@ const Index = () => {
             and the UI that is displayed for selected values. See below for more
             details.
           </p>
-          <div className="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-            <p className="text-blue-800 mb-2">
-              <strong>🎉 NPM Package Available!</strong> The MultiSelect
-              component is now packaged as an NPM module.
-            </p>
-            <a
-              href="/npm-test"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
-            >
-              Test NPM Package →
-            </a>
-          </div>
           <div className="border border-gray-200 rounded-lg p-6">
             <MultiSelect
               label="Tags"
