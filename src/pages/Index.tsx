@@ -437,12 +437,20 @@ const Index = () => {
               </svg>
               <div>
                 <h3 className="text-sm font-semibold text-blue-900 mb-1">
-                  Package Import Test
+                  📦 NPM Package Demo
                 </h3>
-                <p className="text-sm text-blue-800">
-                  These components are imported from:{" "}
+                <p className="text-sm text-blue-800 mb-2">
+                  Currently importing from source:{" "}
                   <code className="px-1 py-0.5 bg-blue-100 rounded text-xs font-mono">
                     ../../lib/src/index
+                  </code>
+                </p>
+                <p className="text-xs text-blue-700">
+                  ✅ Package is built and ready at <code>lib/dist/</code>
+                  <br />✅ After publishing, users would import:{" "}
+                  <code>
+                    import &#123; MultiSelect &#125; from
+                    "oneview-react-multiselect"
                   </code>
                 </p>
               </div>
