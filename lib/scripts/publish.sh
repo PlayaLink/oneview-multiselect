@@ -1,13 +1,23 @@
 #!/bin/bash
 
-# NPM Publishing Script for @oneview/react-multiselect
+# NPM Publishing Script for oneview-react-multiselect
 
-echo "🚀 Publishing @oneview/react-multiselect to NPM..."
+echo "🚀 Publishing oneview-react-multiselect to NPM..."
 
 # Check if user is logged in to npm
 if ! npm whoami > /dev/null 2>&1; then
     echo "❌ You must be logged in to npm. Run: npm login"
     exit 1
+fi
+
+# Install dependencies if node_modules doesn't exist
+if [ ! -d "node_modules" ]; then
+    echo "📦 Installing dependencies..."
+    npm install
+    if [ $? -ne 0 ]; then
+        echo "❌ Dependency installation failed"
+        exit 1
+    fi
 fi
 
 # Clean previous builds
@@ -48,6 +58,6 @@ if [ $? -eq 0 ]; then
     echo "🎉 Successfully published @oneview/react-multiselect!"
     echo "📖 View on npm: https://www.npmjs.com/package/@oneview/react-multiselect"
 else
-    echo "❌ Publishing failed"
+    echo "��� Publishing failed"
     exit 1
 fi
