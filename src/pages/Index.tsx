@@ -413,12 +413,13 @@ const Index = () => {
           </h2>
           <p className="text-gray-600 mb-6">
             This section demonstrates the NPM package components imported from
-            the built package in{" "}
+            the package source in{" "}
             <code className="px-2 py-1 bg-gray-100 rounded text-sm font-mono">
-              lib/dist/
+              lib/src/
             </code>
-            . This verifies that the package exports work correctly and that the
-            components function identically to the local development versions.
+            . This verifies that the package structure and exports work
+            correctly and that the components function identically to the local
+            development versions.
           </p>
 
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
