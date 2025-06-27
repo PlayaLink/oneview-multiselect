@@ -12,7 +12,7 @@ import {
   Tag as NPMTag,
   type MultiSelectItem as NPMMultiSelectItem,
   type SelectedItemUIProps as NPMSelectedItemUIProps,
-} from "../../lib/dist/index.js";
+} from "../../lib/dist/index.mjs";
 
 const Index = () => {
   // State for various examples
