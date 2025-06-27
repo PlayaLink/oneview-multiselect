@@ -442,7 +442,7 @@ const Index = () => {
                 <p className="text-sm text-blue-800">
                   These components are imported from:{" "}
                   <code className="px-1 py-0.5 bg-blue-100 rounded text-xs font-mono">
-                    ../../lib/dist/index.js
+                    ../../lib/src/index
                   </code>
                 </p>
               </div>
