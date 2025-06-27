@@ -192,6 +192,31 @@ const Index = () => {
     { id: 106, label: "Operations" },
   ];
 
+  // Real NPM Package options (Fixed!)
+  const realNpmOptions: RealNPMMultiSelectItem[] = [
+    { id: 1, label: "Production Ready" },
+    { id: 2, label: "TypeScript" },
+    { id: 3, label: "React 18" },
+    { id: 4, label: "Vite" },
+    { id: 5, label: "Tailwind CSS" },
+    { id: 6, label: "Accessible" },
+    { id: 7, label: "Customizable" },
+    { id: 8, label: "Lightweight" },
+    { id: 9, label: "Modern" },
+    { id: 10, label: "Fast" },
+  ];
+
+  const realNpmTeamOptions: RealNPMMultiSelectItem[] = [
+    { id: 201, label: "Frontend" },
+    { id: 202, label: "Backend" },
+    { id: 203, label: "DevOps" },
+    { id: 204, label: "Design" },
+    { id: 205, label: "Product Management" },
+    { id: 206, label: "QA" },
+    { id: 207, label: "Mobile" },
+    { id: 208, label: "Data Science" },
+  ];
+
   // Custom UI components
   const FullWidthItemUI: React.FC<SelectedItemUIProps> = ({
     item,
