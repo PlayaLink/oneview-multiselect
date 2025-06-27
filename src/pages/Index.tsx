@@ -414,7 +414,7 @@ const Index = () => {
                   searchPlaceholder="Search technologies..."
                 />
                 <div className="mt-3 text-xs text-purple-700 bg-purple-50 px-3 py-2 rounded-md">
-                  📦 From NPM package: oneview-react-multiselect-component
+                  📦 From built package: lib/dist/index.js (≡ NPM)
                 </div>
               </div>
 
