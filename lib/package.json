@@ -46,7 +46,6 @@
     "dev": "tsup --watch",
     "typecheck": "tsc --noEmit",
     "lint": "eslint src --ext .ts,.tsx",
-    "prepublishOnly": "npm run build",
     "test": "vitest run"
   },
   "peerDependencies": {
