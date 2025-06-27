@@ -14,13 +14,20 @@ import {
   type SelectedItemUIProps as NPMSelectedItemUIProps,
 } from "../../lib/src/index";
 
-// Import from the fixed NPM package (now works without conflicts!)
+// NPM package import removed for deployment - will work once published to NPM
+// import {
+//   MultiSelect as RealNPMMultiSelect,
+//   Tag as RealNPMTag,
+//   type MultiSelectItem as RealNPMMultiSelectItem,
+//   type SelectedItemUIProps as RealNPMSelectedItemUIProps,
+// } from "oneview-react-multiselect-component";
+
+// Temporarily use local components for build
 import {
   MultiSelect as RealNPMMultiSelect,
-  Tag as RealNPMTag,
   type MultiSelectItem as RealNPMMultiSelectItem,
   type SelectedItemUIProps as RealNPMSelectedItemUIProps,
-} from "oneview-react-multiselect-component";
+} from "@/components/MultiSelect";
 
 const Index = () => {
   // State for various examples
