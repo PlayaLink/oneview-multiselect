@@ -429,8 +429,8 @@ const Index = () => {
                   addButtonText="Add Team"
                   searchPlaceholder="Search teams..."
                 />
-                <div className="mt-3 text-xs text-green-700 bg-green-50 px-3 py-2 rounded-md">
-                  📦 Vertical orientation working perfectly
+                <div className="mt-3 text-xs text-blue-700 bg-blue-50 px-3 py-2 rounded-md">
+                  📦 Package configured for vertical orientation
                 </div>
               </div>
 
