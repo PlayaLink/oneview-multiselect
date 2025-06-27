@@ -436,7 +436,7 @@ const Index = () => {
                   searchPlaceholder="Search teams..."
                 />
                 <div className="mt-3 text-xs text-purple-700 bg-purple-50 px-3 py-2 rounded-md">
-                  📦 Vertical orientation from NPM package
+                  📦 Vertical orientation from built package
                 </div>
               </div>
 
