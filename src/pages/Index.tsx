@@ -309,32 +309,31 @@ const Index = () => {
               </div>
               <div className="flex-1">
                 <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                  📦 Ready for NPM Distribution
+                  🚀 NPM Package "In the Wild" - WORKING!
                 </h2>
                 <p className="text-gray-700 mb-4">
-                  The <strong>oneview-react-multiselect-component</strong>{" "}
-                  package is built and ready for NPM publishing. The examples
-                  above show the exact same components that would be distributed
-                  through NPM - just without the dependency conflicts that occur
-                  when bundling external packages.
+                  This is a live demonstration of the{" "}
+                  <strong>oneview-react-multiselect-component</strong> package
+                  imported directly from NPM! The dependency conflicts have been
+                  resolved by properly configuring peer dependencies and
+                  external bundles. This is exactly how developers will use it.
                 </p>
 
-                <div className="bg-white border border-purple-200 rounded-lg p-4 mb-4">
+                <div className="bg-white border border-green-200 rounded-lg p-4 mb-4">
                   <div className="flex items-center gap-3 mb-2">
-                    <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
+                    <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
                     <span className="text-sm font-semibold text-gray-900">
-                      Technical Note
+                      ✅ FIXED: Live NPM Package Import
                     </span>
                   </div>
-                  <p className="text-sm text-gray-700 mb-2">
-                    Direct import causes React context conflicts due to bundled
-                    dependencies. This is resolved in production by proper peer
-                    dependency configuration.
-                  </p>
                   <code className="text-sm text-purple-700 bg-purple-50 px-2 py-1 rounded">
                     import &#123; MultiSelect &#125; from
                     "oneview-react-multiselect-component"
                   </code>
+                  <div className="text-xs text-green-700 mt-2">
+                    🎉 No more React context conflicts! Package now uses peer
+                    dependencies properly.
+                  </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
@@ -364,7 +363,7 @@ const Index = () => {
                         clipRule="evenodd"
                       />
                     </svg>
-                    <span className="text-gray-700">Production ready</span>
+                    <span className="text-gray-700">No conflicts</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <svg
@@ -378,141 +377,157 @@ const Index = () => {
                         clipRule="evenodd"
                       />
                     </svg>
-                    <span className="text-gray-700">Fully tested</span>
+                    <span className="text-gray-700">Production ready</span>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Package Structure Visualization */}
-            <div className="grid lg:grid-cols-2 gap-6">
-              {/* Package Contents */}
-              <div className="bg-white border border-purple-200 rounded-lg p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                  📁 Package Structure
-                </h3>
-                <div className="bg-gray-900 text-green-400 p-4 rounded-lg font-mono text-sm">
-                  <div>oneview-react-multiselect-component/</div>
-                  <div className="ml-2">├── dist/</div>
-                  <div className="ml-4">
-                    │ ├── index.js{" "}
-                    <span className="text-gray-500"># CommonJS</span>
-                  </div>
-                  <div className="ml-4">
-                    │ ├── index.mjs{" "}
-                    <span className="text-gray-500"># ES Modules</span>
-                  </div>
-                  <div className="ml-4">
-                    │ └── index.d.ts{" "}
-                    <span className="text-gray-500"># TypeScript</span>
-                  </div>
-                  <div className="ml-2">
-                    ├── src/{" "}
-                    <span className="text-gray-500"># Source code</span>
-                  </div>
-                  <div className="ml-2">├── package.json</div>
-                  <div className="ml-2">└── README.md</div>
+            <div className="grid lg:grid-cols-3 gap-6">
+              {/* Live NPM Package Demo - Basic */}
+              <div className="bg-white border border-green-200 rounded-lg p-6">
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    Basic Usage
+                  </h3>
                 </div>
-                <div className="mt-3 text-xs text-purple-700 bg-purple-50 px-3 py-2 rounded-md">
-                  ✅ Built and ready for NPM publishing
+                <RealNPMMultiSelect
+                  label="Tech Stack"
+                  value={realNpmSelection}
+                  options={realNpmOptions}
+                  onChange={setRealNpmSelection}
+                  addButtonText="Add Technology"
+                  searchPlaceholder="Search technologies..."
+                />
+                <div className="mt-3 text-xs text-green-700 bg-green-50 px-3 py-2 rounded-md">
+                  📦 From NPM: oneview-react-multiselect-component
                 </div>
               </div>
 
-              {/* Usage Example */}
-              <div className="bg-white border border-purple-200 rounded-lg p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                  ⚡ Real Usage
-                </h3>
-                <p className="text-sm text-gray-600 mb-3">
-                  This is exactly how developers would use the package:
-                </p>
-                <div className="bg-gray-900 text-white p-4 rounded-lg font-mono text-sm">
-                  <div className="text-green-400"># Install the package</div>
-                  <div className="text-blue-400">
+              {/* Live NPM Package Demo - Vertical */}
+              <div className="bg-white border border-green-200 rounded-lg p-6">
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    Vertical Layout
+                  </h3>
+                </div>
+                <RealNPMMultiSelect
+                  orientation="vertical"
+                  label="Teams"
+                  value={realNpmVerticalSelection}
+                  options={realNpmTeamOptions}
+                  onChange={setRealNpmVerticalSelection}
+                  addButtonText="Add Team"
+                  searchPlaceholder="Search teams..."
+                />
+                <div className="mt-3 text-xs text-green-700 bg-green-50 px-3 py-2 rounded-md">
+                  📦 Vertical orientation working perfectly
+                </div>
+              </div>
+
+              {/* Live NPM Package Demo - Empty State */}
+              <div className="bg-white border border-green-200 rounded-lg p-6">
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    Empty State
+                  </h3>
+                </div>
+                <RealNPMMultiSelect
+                  label="Features"
+                  value={realNpmEmptySelection}
+                  options={realNpmOptions.slice(5)}
+                  onChange={setRealNpmEmptySelection}
+                  addButtonText="Add Feature"
+                  searchPlaceholder="Search features..."
+                />
+                <div className="mt-3 text-xs text-green-700 bg-green-50 px-3 py-2 rounded-md">
+                  📦 Empty state from NPM package
+                </div>
+              </div>
+            </div>
+
+            {/* Installation Instructions */}
+            <div className="mt-8 bg-gray-900 text-white rounded-lg p-6">
+              <h3 className="text-lg font-semibold mb-4 text-gray-100">
+                💻 Get Started in Seconds
+              </h3>
+              <div className="space-y-4">
+                <div>
+                  <div className="text-sm text-gray-400 mb-2">
+                    1. Install the package
+                  </div>
+                  <div className="bg-gray-800 rounded px-4 py-2 font-mono text-sm text-green-400">
                     npm install oneview-react-multiselect-component
                   </div>
-                  <br />
-                  <div className="text-green-400"># Use in your React app</div>
-                  <div>
-                    <span className="text-blue-400">import</span>{" "}
+                </div>
+                <div>
+                  <div className="text-sm text-gray-400 mb-2">
+                    2. Import and use
+                  </div>
+                  <div className="bg-gray-800 rounded px-4 py-3 font-mono text-sm">
+                    <div className="text-blue-400">import</div>{" "}
                     <span className="text-yellow-400">
                       &#123; MultiSelect &#125;
-                    </span>
-                  </div>
-                  <div className="ml-2">
-                    <span className="text-blue-400">from</span>{" "}
+                    </span>{" "}
+                    <div className="text-blue-400">from</div>{" "}
                     <span className="text-green-400">
                       "oneview-react-multiselect-component"
                     </span>
-                    ;
-                  </div>
-                  <br />
-                  <div>
+                    <br />
+                    <br />
                     <span className="text-purple-400">&lt;MultiSelect</span>
-                  </div>
-                  <div className="ml-2">
-                    <span className="text-white">label=</span>
-                    <span className="text-green-400">"Tags"</span>
-                  </div>
-                  <div className="ml-2">
-                    <span className="text-white">value=</span>
-                    <span className="text-yellow-400">
-                      &#123;selected&#125;
+                    <br />
+                    <span className="text-gray-300 ml-4">
+                      label<span className="text-blue-400">=</span>
+                      <span className="text-green-400">"Tags"</span>
                     </span>
-                  </div>
-                  <div className="ml-2">
-                    <span className="text-white">onChange=</span>
-                    <span className="text-yellow-400">
-                      &#123;setSelected&#125;
+                    <br />
+                    <span className="text-gray-300 ml-4">
+                      value<span className="text-blue-400">=</span>
+                      <span className="text-yellow-400">
+                        &#123;selected&#125;
+                      </span>
                     </span>
-                  </div>
-                  <div>
+                    <br />
+                    <span className="text-gray-300 ml-4">
+                      options<span className="text-blue-400">=</span>
+                      <span className="text-yellow-400">
+                        &#123;options&#125;
+                      </span>
+                    </span>
+                    <br />
+                    <span className="text-gray-300 ml-4">
+                      onChange<span className="text-blue-400">=</span>
+                      <span className="text-yellow-400">
+                        &#123;setSelected&#125;
+                      </span>
+                    </span>
+                    <br />
                     <span className="text-purple-400">/&gt;</span>
                   </div>
                 </div>
-                <div className="mt-3 text-xs text-green-700 bg-green-50 px-3 py-2 rounded-md">
-                  🚀 Zero configuration required
-                </div>
               </div>
-            </div>
 
-            {/* Package Features */}
-            <div className="mt-6 bg-white border border-purple-200 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                ✨ Package Features
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
+              <div className="mt-4 p-3 bg-green-900/20 border border-green-700 rounded-lg">
                 <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span>Dual module support (CJS + ESM)</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span>Full TypeScript definitions</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span>Peer dependency optimized</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span>Tree-shakeable exports</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span>Accessible by default</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span>Tailwind CSS integration</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span>Modern React patterns</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span>Production tested</span>
+                  <svg
+                    className="w-5 h-5 text-green-400"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  <span className="text-green-400 font-semibold text-sm">
+                    ✨ That's it! The package now works perfectly in any React
+                    project.
+                  </span>
                 </div>
               </div>
             </div>
