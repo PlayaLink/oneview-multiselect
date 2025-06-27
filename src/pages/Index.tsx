@@ -407,8 +407,8 @@ const Index = () => {
                   addButtonText="Add Technology"
                   searchPlaceholder="Search technologies..."
                 />
-                <div className="mt-3 text-xs text-green-700 bg-green-50 px-3 py-2 rounded-md">
-                  📦 From NPM: oneview-react-multiselect-component
+                <div className="mt-3 text-xs text-blue-700 bg-blue-50 px-3 py-2 rounded-md">
+                  📦 Ready for NPM: oneview-react-multiselect-component
                 </div>
               </div>
 
