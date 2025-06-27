@@ -1,3 +1,6 @@
+// Import components first
+import { MultiSelect as MultiSelectComponent } from "./components/MultiSelect";
+
 // Main MultiSelect component exports
 export { MultiSelect } from "./components/MultiSelect";
 export { Tag } from "./components/Tag";
@@ -23,4 +26,5 @@ export { cn } from "./lib/utils";
 export { tagVariants } from "./components/Tag";
 
 // Default export for Figma Make compatibility
-export { MultiSelect as default } from "./components/MultiSelect";
+// Import and re-export to ensure proper component function export
+export default MultiSelectComponent;
