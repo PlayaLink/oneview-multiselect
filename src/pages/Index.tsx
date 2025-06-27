@@ -14,10 +14,13 @@ import {
   type SelectedItemUIProps as NPMSelectedItemUIProps,
 } from "../../lib/src/index";
 
-// Note: The actual NPM package creates React context conflicts when imported
-// due to bundled dependencies. In a real project, you'd install via:
-// npm install oneview-react-multiselect-component
-// For this demo, we'll show the package structure and usage examples instead
+// Import from the fixed NPM package (now works without conflicts!)
+import {
+  MultiSelect as RealNPMMultiSelect,
+  Tag as RealNPMTag,
+  type MultiSelectItem as RealNPMMultiSelectItem,
+  type SelectedItemUIProps as RealNPMSelectedItemUIProps,
+} from "oneview-react-multiselect-component";
 
 const Index = () => {
   // State for various examples
