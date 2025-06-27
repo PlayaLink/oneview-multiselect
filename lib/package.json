@@ -26,16 +26,15 @@
     "name": "OneView V2 Team",
     "email": "jordan@chghealthcare.com"
   },
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
-    },
-    "./styles": "./dist/styles.css"
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
   },
   "sideEffects": false,
   "files": [
