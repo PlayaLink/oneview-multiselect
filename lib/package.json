@@ -1,6 +1,6 @@
 {
   "name": "oneview-react-multiselect",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Modern React MultiSelect component with tags, search, and custom templates for OneView V2",
   "keywords": [
     "react",
